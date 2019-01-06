@@ -23,7 +23,7 @@ And run this commands in terminal:
 ### Fork me on GitHub
 I'm always happy to take pull requests from others.
 
-[vim-plug](https://github.com/junegunn/vim-plug)
+[vim-plug]:https://github.com/junegunn/vim-plug
 [gcc]:https://www.gnu.org/software/gcc/
 [clang]:https://clang.llvm.org
 [git]:http://git-scm.com
