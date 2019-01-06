@@ -13,15 +13,15 @@ vmap > >gv
 nmap <F2> :w<CR>
 " In insert mode F2 will exit insert, save, enters insert again
 imap <F2> <ESC>:w<CR>i
-" Switch between header/source with F4
-map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+" Switch between header/source with F6
+map <F6> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 
 " Nerd Tree
-map <F2> :NERDTreeToggle<CR>
+map <F3> :NERDTreeToggle<CR>
 map <leader>nf :NERDTreeFind<cr>
 
 " TagBar
-nmap <F5> :TagbarToggle<CR>
+nmap <F4> :TagbarToggle<CR>
 
 " Window navigations
 nmap <Leader>wv :vsplit<CR>
@@ -50,24 +50,13 @@ Plug 'majutsushi/tagbar'
 Plug 'morhetz/gruvbox'
 
 " Completions
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-Plug 'Shougo/deoplete-clangx'
-Plug 'zchee/deoplete-jedi'
-Plug 'thalesmello/webcomplete.vim'  " from the currently open web page in browser
-Plug 'carlitux/deoplete-ternjs' "   for js: npm install -g tern
+Plug 'maralla/completor.vim'
 Plug 'Shougo/neoinclude.vim'
 Plug 'ervandew/supertab'
 Plug 'mattn/emmet-vim'
 Plug 'lvht/phpcd.vim' " for php
 
 " Syntax
-Plug 'w0rp/ale'
 Plug 'scrooloose/syntastic'
 " Colors in css
 Plug 'ap/vim-css-color'
@@ -92,8 +81,6 @@ set expandtab
 set shiftwidth=4
 " Show the matching part of the pair for [] {} and ()
 set showmatch
-" Auto save file
-set autoread
 
 "	LOOK
 color gruvbox
@@ -105,15 +92,11 @@ set relativenumber
 set cursorline
 
 
-" COMPLETE
-let g:deoplete#enable_at_startup = 1
-let g:ale_completion_enabled = 1
-let g:airline#extensions#ale#enabled = 1
-
 "   SYNTASTIC
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
+let g:syntastic_aggregate_errors = 1
 
 let g:syntastic_c_checkers = [ 'gcc', 'make', 'clang_check', 'flawfinder' ]
 let g:syntastic_python_checkers = [ 'pylint', 'flake8', 'pep8', 'pycodestyle', 'pyflakes' ]
