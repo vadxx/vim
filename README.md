@@ -1,7 +1,7 @@
 # vimrc
 The simple and fast Vim configuration for c/c++, python, html/css, java.
 
-![demo-start] ![demo-cpp]
+![demo]
 
 # Features
 *   Simple modern config (only .vimrc-file);
@@ -26,7 +26,7 @@ Optional (update [vim])
 ```
 
 ## macOS
-Install [homebrew] first, then in terminal:
+Install [homebrew] first, then:
 ```bash
     brew install ctags
 ```
@@ -38,16 +38,16 @@ Optional (update [vim])
 
 # Installation
 ## Linux, \*nix, MacOS Installation
-Install [vim-plug]. 
-And run this commands in terminal:
+Install [vim-plug],then:
 ```bash
     git clone https://github.com/vadxx/vimrc
     cp ./vimrc/.vimrc ~/.vimrc
 ```
 Open your vim and type:
-```bash
+```vim
     :PlugInstall
 ```
+Reload your vim.
 
 # Contribute
 ### Fork me on GitHub
@@ -57,5 +57,4 @@ I'm always happy to take pull requests from others.
 [vim-plug]:https://github.com/junegunn/vim-plug
 [vim]:http://www.vim.org/download.php#pc
 
-[demo-start]:./demo_start.png
-[demo-cpp]:./demo_cpp.png
+[demo]:./demo.png
