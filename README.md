@@ -1,8 +1,6 @@
 # vimrc
 The simple and fast Vim configuration for c/c++, python, html/css, java.
-
 ![demo]
-
 # Features
 *   Simple modern config (only one vimrc-file);
 *   Minimal requirements (not needed other fonts, support vim7+ etc);
@@ -15,17 +13,16 @@ The simple and fast Vim configuration for c/c++, python, html/css, java.
 
 # Requirements
     [Vim] 7+.
-## \*nix
-Ubuntu/Debian:
+**Ubuntu/Debian:**
 ```
     Git, gcc, ctags.
 ```    
-macOS:
+**macOS:**
 ```
     Command-line Tools, ctags.
 ```
 # Installation
-## Linux, \*nix, macOS
+Linux, \*nix, macOS:
 Install [vim-plug],then:
 ```bash
     git clone https://github.com/vadxx/vimrc
@@ -38,25 +35,27 @@ Open your vim and type:
 Reload your vim.
 
 # Dependecies
-Ubuntu/Debian:
+**Ubuntu/Debian:**
 ```bash
     sudo apt-get install gcc git ctags
 ```
-Optional (update [vim])
+Optional:
 ```bash
     sudo apt-get install vim python
     pip install flake8
 ```
-macOS:
+**macOS:**
 Install [homebrew] first, then:
 ```bash
     brew install ctags
 ```
-Optional (update [vim])
+Optional:
 ```bash
     brew install vim
     pip install flake8
 ```
+# Keybindings
+Soon...
 
 # Contribute
 ### Fork me on GitHub
