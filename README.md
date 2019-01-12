@@ -1,5 +1,5 @@
 # vimrc
-The simple and fast Vim configuration for c/c++, python, html/css, java.
+The simple and fast Vim configuration for c/c++, python, php, html/css, javascript, java.
 ![demo]
 
 ## Installation
@@ -21,7 +21,7 @@ Install Dependecies:
     pip install flake8  #optional
 ```
 
-## Keybindings
+## Keybindings (custom)
 *   `SPC + q` - exit from window
 *   `SPC + s` - save file
 *   `SPC + tt` - toggle NerdTree
@@ -35,6 +35,7 @@ Install Dependecies:
 *   `CTRL + E` - call Emmet
 *   `<` and `>` - for indent line (or selected line)
 
+For comfort, instead of `:` you can use `;`. To explore the standard features of Vim, I recommend pressing `F1`.
 
 ## Features
 *   Simple modern config;
