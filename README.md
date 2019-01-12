@@ -1,61 +1,52 @@
 # vimrc
 The simple and fast Vim configuration for c/c++, python, html/css, java.
 ![demo]
+
+# Installation
+```bash
+    cd ~ && git clone https://github.com/vadxx/vimrc .vim && ln -s ~/.vim/vimrc ~/.vimrc
+```
+Install Dependecies:
+**Ubuntu/Debian:**
+```bash
+    sudo apt-get install gcc git ctags
+    sudo apt-get install vim python #optional
+    pip install flake8  #optional
+```
+**macOS:** (install [homebrew] first)
+```bash
+    brew install ctags
+    brew install vim    #optional
+    pip install flake8  #optional
+```
+
+# Keybindings
+*   `SPC + q` - exit from window
+*   `SPC + s` - save file
+*   `SPC + tt` - toggle NerdTree
+*   `SPC + tf` - find file in NerdTree
+*   `SPC + tb` - toggle TagBar
+*   `SPC + f` - open fuzzy finder
+*   `SPC + wt` - new tab
+*   `SPC + wv` - split window vertical
+*   `SPC + wh` - split window horizontal
+*   `SPC + [1-9]` - go to that tab
+*   `CTRL + E` - call Emmet
+*   `<` and `>` - for indent line (or selected line)
+
+
 # Features
-*   Simple modern config (only one vimrc-file);
+*   Simple modern config;
 *   Minimal requirements (not needed other fonts, support vim7+ etc);
 *   Syntax highlight;
 *   Syntax checking error's and warnings;
 *   Code completions;
 *   Easy keybindings;
+*   Emmet;
+*   Commender;
 *   File-tree navigation;
 *   Tag-bar (needed ctags);
-
-# Requirements
-    [Vim] 7+.
-**Ubuntu/Debian:**
-```
-    Git, gcc, ctags.
-```    
-**macOS:**
-```
-    Command-line Tools, ctags.
-```
-# Installation
-Linux, \*nix, macOS:
-Install [vim-plug],then:
-```bash
-    git clone https://github.com/vadxx/vimrc
-    cp ./vimrc/.vimrc ~/.vimrc
-```
-Open your vim and type:
-```vim
-    :PlugInstall
-```
-Reload your vim.
-
-# Dependecies
-**Ubuntu/Debian:**
-```bash
-    sudo apt-get install gcc git ctags
-```
-Optional:
-```bash
-    sudo apt-get install vim python
-    pip install flake8
-```
-**macOS:**
-Install [homebrew] first, then:
-```bash
-    brew install ctags
-```
-Optional:
-```bash
-    brew install vim
-    pip install flake8
-```
-# Keybindings
-Soon...
+*   Fuzzy file finder;
 
 # Contribute
 ### Fork me on GitHub
