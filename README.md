@@ -2,11 +2,12 @@
 The simple and fast Vim configuration for c/c++, python, html/css, java.
 ![demo]
 
-# Installation
+## Installation
 ```bash
     cd ~ && git clone https://github.com/vadxx/vimrc .vim && ln -s ~/.vim/vimrc ~/.vimrc
 ```
 Install Dependecies:
+
 **Ubuntu/Debian:**
 ```bash
     sudo apt-get install gcc git ctags
@@ -20,7 +21,7 @@ Install Dependecies:
     pip install flake8  #optional
 ```
 
-# Keybindings
+## Keybindings
 *   `SPC + q` - exit from window
 *   `SPC + s` - save file
 *   `SPC + tt` - toggle NerdTree
@@ -35,7 +36,7 @@ Install Dependecies:
 *   `<` and `>` - for indent line (or selected line)
 
 
-# Features
+## Features
 *   Simple modern config;
 *   Minimal requirements (not needed other fonts, support vim7+ etc);
 *   Syntax highlight;
@@ -48,7 +49,7 @@ Install Dependecies:
 *   Tag-bar (needed ctags);
 *   Fuzzy file finder;
 
-# Contribute
+## Contribute
 ### Fork me on GitHub
 I'm always happy to take pull requests from others.
 
@@ -57,3 +58,6 @@ I'm always happy to take pull requests from others.
 [Vim]:http://www.vim.org/download.php#pc
 
 [demo]:./demo.png
+
+## License
+MIT
