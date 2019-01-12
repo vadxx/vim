@@ -3,33 +3,53 @@
 "	MAPPINGS
 " Make leader the spacebar key
 let mapleader = " "
-" For qwerty it is easier tu use ; than :
-map ; :
+
 " Indent, keep selected text
 vmap < <gv
 vmap > >gv
 
-" In normal mode F2 will save the file
-nmap <F2> :w<CR>
-" In insert mode F2 will exit insert, save, enters insert again
-imap <F2> <ESC>:w<CR>i
+" SPC + Q  Exit from file
+nmap <Leader>q :q!<CR>
+
+" SPC + S  Save file
+nmap <Leader>s :w<CR>
 " Switch between header/source with F6
 map <F6> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 
-" Nerd Tree
-map <F3> :NERDTreeToggle<CR>
-map <leader>nf :NERDTreeFind<cr>
+" SPC + TT  Nerd Tree Toggle
+map <Leader>tt :NERDTreeToggle<CR>
+" SPC + TF  Nerd Tree Toggle
+map <Leader>tf :NERDTreeFind<cr>
 
-" TagBar
-nmap <F4> :TagbarToggle<CR>
+" SPC + TB  TagBar
+nmap <Leader>tb :TagbarToggle<CR>
 
-" Window navigations
+map <Leader>f  :Files<CR>
+" SPC + C  Comment line or lines
+nmap <Leader>c <plug>NERDCommenterToggle
+vmap <Leader>c <plug>NERDCommenterToggle gv
+nmap <Leader>C <plug>NERDCommenterToggle
+vmap <Leader>C <plug>NERDCommenterToggle gv
+
+" SPC + W  Window navigations
 nmap <Leader>wv :vsplit<CR>
 nmap <Leader>wh :split<CR>
 nmap <Leader>wt :tabnew<CR>
 
-" Call Emmet CTRL+E
+" CTRL + E  Call Emmet 
 let g:user_emmet_expandabbr_key = '<C-e>'
+
+" SPC + 1...9  Go to that tab
+map <silent> <Leader>1 1gt
+map <silent> <Leader>2 2gt
+map <silent> <Leader>3 3gt
+map <silent> <Leader>4 4gt
+map <silent> <Leader>5 5gt
+map <silent> <Leader>6 6gt
+map <silent> <Leader>7 7gt
+map <silent> <Leader>8 8gt
+map <silent> <Leader>9 9gt
+
 
 " Clear highlighting on escape in normal mode
 nnoremap <esc> :noh<return><esc>
@@ -39,31 +59,30 @@ nnoremap <esc>^[ <esc>^[
 call plug#begin('~/.vim/plugged')
 " Support for a lot of languages
 Plug 'sheerun/vim-polyglot'
-
 " Look
 Plug 'mhinz/vim-startify'
 Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
-
+Plug 'airblade/vim-gitgutter'
 " Color
 Plug 'morhetz/gruvbox'
-
 " Completions
 Plug 'maralla/completor.vim'
 Plug 'Shougo/neoinclude.vim'
 Plug 'ervandew/supertab'
 Plug 'mattn/emmet-vim'
-Plug 'lvht/phpcd.vim' " for php
-
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/nerdcommenter'
+" Snippets
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " Syntax
 Plug 'scrooloose/syntastic'
 " Colors in css
 Plug 'ap/vim-css-color'
-
-" Snippets
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
+" Search
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 " Initialize plugin system
 call plug#end()
 
@@ -85,22 +104,22 @@ set showmatch
 "	LOOK
 color gruvbox
 set background=dark
+let g:lightline = {'colorscheme': 'seoul256'}
 " Show numbers of lines
 set number
 set relativenumber
 " Show current line
 set cursorline
-
+" Show tab line
+set showtabline=2
+" Show tabs
+set listchars=tab:│·,trail:_
 
 "   SYNTASTIC
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_aggregate_errors = 1
-
-let g:syntastic_c_checkers = [ 'gcc', 'make', 'clang_check', 'flawfinder' ]
-let g:syntastic_python_checkers = [ 'pylint', 'flake8', 'pep8', 'pycodestyle', 'pyflakes' ]
-
 
 "	SEARCH
 " Search as characters are entered
@@ -110,8 +129,6 @@ set hlsearch
 " Better searching
 set ignorecase
 set smartcase
-" Clear search pattern
-let @/ = ""
 
 "	EXTRA
 " Enable file type detection and do language-dependent indenting.
@@ -121,12 +138,12 @@ set laststatus=2
 " Make backspace behave in a sane manner.
 set backspace=indent,eol,start
 map Q <Nop>
-" still keep ability to repeat a go-to
+" Still keep ability to repeat a go-to
 noremap ;; ;
 " Adds x11 clipboard shortcuts
 vnoremap <C-c> "+y
 map <C-p> "+P
-" get rid of uppercase trouble
+" Get rid of uppercase trouble
 command! W w
 command! Q q
 command! WQ wq
@@ -142,3 +159,19 @@ command! Wqa wqa
 set nocompatible
 " Mouse Support
 set mouse=a
+" Get rid of the ugly default status line
+set noshowmode
+" Redraw only when necessary
+set lazyredraw
+" Fix delimitter in nerdtree
+let g:NERDTreeNodeDelimiter = "\u00a0"
+let NERDTreeIgnore=['CVS','\.dSYM$', '.git', '.DS_Store', '\.swp$', '\.swo$']
+"setting root dir in NT also sets VIM's cd
+let NERDTreeChDirMode=2
+" Shows invisibles
+let g:NERDTreeShowHidden=1
+" Clear search pattern
+let @/ = ""
+" For qwerty it is easier tu use ; than :
+map ; :
+
