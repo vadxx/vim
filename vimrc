@@ -16,8 +16,8 @@ nmap <Leader>s :w<CR>
 " Switch between header/source with F6
 map <F6> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 
-" SPC + TT  Nerd Tree Toggle
-map <Leader>tt :NERDTreeToggle<CR>
+" SPC + T  Nerd Tree Toggle
+map <Leader>t :NERDTreeToggle<CR>
 " SPC + TF  Nerd Tree Toggle
 map <Leader>tf :NERDTreeFind<cr>
 
@@ -50,7 +50,14 @@ map <silent> <Leader>7 7gt
 map <silent> <Leader>8 8gt
 map <silent> <Leader>9 9gt
 
+" SPC + I  Auto Format code
+noremap <Leader>= :Autoformat<CR>
 
+" SPC + LD Toggle  Live-Down Server
+nmap <Leader>ld :LivedownToggle<CR>
+
+" SPC + BG  Toggle Light/Dark background
+nmap <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 " Clear highlighting on escape in normal mode
 nnoremap <esc> :noh<return><esc>
 nnoremap <esc>^[ <esc>^[
@@ -65,24 +72,35 @@ Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
 Plug 'airblade/vim-gitgutter'
+Plug 'Yggdroot/indentLine'
 " Color
 Plug 'morhetz/gruvbox'
 " Completions
-Plug 'maralla/completor.vim'
-Plug 'Shougo/neoinclude.vim'
 Plug 'ervandew/supertab'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
+" Deoplete
+Plug 'roxma/nvim-yarp' | Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/neco-Syntax'
+Plug 'xaizek/vim-inccomplete'
+Plug 'Shougo/deoplete-clangx'
+Plug 'artur-shaik/vim-javacomplete2'
+Plug 'zchee/deoplete-jedi' " Python
+Plug 'lvht/phpcd.vim'
 " Snippets
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " Syntax
 Plug 'scrooloose/syntastic'
+Plug 'Chiel92/vim-autoformat'
 " Colors in css
 Plug 'ap/vim-css-color'
 " Search
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+" Extra
+Plug 'shime/vim-livedown'  " live-server
 " Initialize plugin system
 call plug#end()
 
@@ -114,13 +132,14 @@ set cursorline
 set showtabline=2
 " Show tabs
 set listchars=tab:│·,trail:_
-
+let g:indentLine_color_dark = 1 
+"   COMPLETE
+let g:deoplete#enable_at_startup = 1
 "   SYNTASTIC
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_aggregate_errors = 1
-
 "	SEARCH
 " Search as characters are entered
 set incsearch
@@ -161,8 +180,6 @@ set nocompatible
 set mouse=a
 " Get rid of the ugly default status line
 set noshowmode
-" Redraw only when necessary
-set lazyredraw
 " Fix delimitter in nerdtree
 let g:NERDTreeNodeDelimiter = "\u00a0"
 let NERDTreeIgnore=['CVS','\.dSYM$', '.git', '.DS_Store', '\.swp$', '\.swo$']
@@ -174,4 +191,5 @@ let g:NERDTreeShowHidden=1
 let @/ = ""
 " For qwerty it is easier tu use ; than :
 map ; :
-
+"to disable preview mode
+set completeopt-=preview
