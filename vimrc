@@ -1,44 +1,37 @@
-" VIM CONFIG FILE
-
+" VIM CONFIG FILE 
+" Author: Anton Volkov - https://github.com/vadxx
+"
 "	MAPPINGS
 " Make leader the spacebar key
 let mapleader = " "
-
 " Indent, keep selected text
 vmap < <gv
 vmap > >gv
-
 " SPC + Q  Exit from file
 nmap <Leader>q :q!<CR>
-
 " SPC + S  Save file
 nmap <Leader>s :w<CR>
 " Switch between header/source with F6
 map <F6> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
-
-" SPC + T  Nerd Tree Toggle
-map <Leader>t :NERDTreeToggle<CR>
-" SPC + TF  Nerd Tree Toggle
-map <Leader>tf :NERDTreeFind<cr>
-
+" SPC + N  Nerd Tree Toggle
+map <Leader>n :NERDTreeToggle<CR>
+" SPC + NF  Nerd Tree Toggle
+map <Leader>nf :NERDTreeFind<cr>
 " SPC + TB  TagBar
 nmap <Leader>tb :TagbarToggle<CR>
-
-map <Leader>f  :Files<CR>
+" SPC + F  Show files menu
+map <Leader>f :Files<CR>
 " SPC + C  Comment line or lines
 nmap <Leader>c <plug>NERDCommenterToggle
 vmap <Leader>c <plug>NERDCommenterToggle gv
 nmap <Leader>C <plug>NERDCommenterToggle
 vmap <Leader>C <plug>NERDCommenterToggle gv
-
 " SPC + W  Window navigations
-nmap <Leader>wv :vsplit<CR>
-nmap <Leader>wh :split<CR>
-nmap <Leader>wt :tabnew<CR>
-
+nmap <Leader>\ :vsplit<CR>
+nmap <Leader>- :split<CR>
+nmap <Leader>t :tabnew<CR>
 " CTRL + E  Call Emmet 
 let g:user_emmet_expandabbr_key = '<C-e>'
-
 " SPC + 1...9  Go to that tab
 map <silent> <Leader>1 1gt
 map <silent> <Leader>2 2gt
@@ -49,19 +42,15 @@ map <silent> <Leader>6 6gt
 map <silent> <Leader>7 7gt
 map <silent> <Leader>8 8gt
 map <silent> <Leader>9 9gt
-
 " SPC + I  Auto Format code
 noremap <Leader>= :Autoformat<CR>
-
 " SPC + LD Toggle  Live-Down Server
 nmap <Leader>ld :LivedownToggle<CR>
-
 " SPC + BG  Toggle Light/Dark background
 nmap <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 " Clear highlighting on escape in normal mode
 nnoremap <esc> :noh<return><esc>
 nnoremap <esc>^[ <esc>^[
-
 "	PLUGINS
 call plug#begin('~/.vim/plugged')
 " Support for a lot of languages
@@ -103,7 +92,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'shime/vim-livedown'  " live-server
 " Initialize plugin system
 call plug#end()
-
 "	SETTINGS
 " Default encoding
 set encoding=UTF-8
@@ -118,7 +106,6 @@ set expandtab
 set shiftwidth=4
 " Show the matching part of the pair for [] {} and ()
 set showmatch
-
 "	LOOK
 color gruvbox
 set background=dark
@@ -135,7 +122,7 @@ set listchars=tab:│·,trail:_
 let g:indentLine_color_dark = 1 
 "   COMPLETE
 let g:deoplete#enable_at_startup = 1
-"   SYNTASTIC
+"   SYNTAX
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -148,7 +135,6 @@ set hlsearch
 " Better searching
 set ignorecase
 set smartcase
-
 "	EXTRA
 " Enable file type detection and do language-dependent indenting.
 filetype plugin indent on
@@ -174,7 +160,7 @@ command! Qa qa
 command! WQA wqa
 command! WQa wqa
 command! Wqa wqa
-" disable vi compatibility (emulation of old bugs)
+" Disable vi compatibility (emulation of old bugs)
 set nocompatible
 " Mouse Support
 set mouse=a
@@ -191,5 +177,5 @@ let g:NERDTreeShowHidden=1
 let @/ = ""
 " For qwerty it is easier tu use ; than :
 map ; :
-"to disable preview mode
+" Disable preview mode
 set completeopt-=preview
