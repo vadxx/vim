@@ -1,10 +1,10 @@
-# vimrc
+# vim
 The simple and fast Vim configuration for c/c++, python, php, html/css, javascript, java.
 ![demo]
 
 ## Installation (with dependecies)
 ```bash
-cd ~ && git clone https://github.com/vadxx/vimrc .vim && sh ~/.vim/install.sh
+cd ~ && git clone https://github.com/vadxx/vim .vim && sh ~/.vim/install.sh
 ```
 #### Optional dependecies:
 For python style guide help:
@@ -22,7 +22,7 @@ npm install -g live-server
 
 ## Keybindings (custom)
 For comfort, instead of `:` you can use `;`. 
-### Base:
+#### Base:
 *   `SPC + q` - exit from window
 *   `SPC + s` - save file
 *   `SPC + n` - toggle NerdTree
@@ -32,7 +32,7 @@ For comfort, instead of `:` you can use `;`.
 
 To explore the standard features of Vim, I recommend pressing `F1`.
 
-### Work with code:
+#### Work with code:
 *   `SPC + =` - auto format code
 *   `SPC + c` - comment line(s)
 *   `CTRL + e` - call [Emmet]
@@ -40,13 +40,13 @@ To explore the standard features of Vim, I recommend pressing `F1`.
 *   `CTRL + p` - paste text (global)
 *   `<` and `>` - for indent line (or selected line)
 
-### Window navigation:
+#### Window navigation:
 *   `SPC + t` - new tab
 *   `SPC + \ ` - split window vertical
 *   `SPC + -` - split window horizontal
 *   `SPC + [1-9]` - go to that tab
 
-### Extra:
+#### Extra:
 *   `SPC + bg` - toggle light/dark theme
 *   `SPC + ld` - togge [livedown]
 
@@ -90,5 +90,6 @@ I'm always happy to take pull requests from others.
 
 [livedown]:https://github.com/shime/livedown
 ## License
-
+```
 MIT
+```
