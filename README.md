@@ -25,12 +25,13 @@ For comfort, instead of `:` you can use `;`.
 #### Base:
 *   `SPC + q` - exit from window
 *   `SPC + s` - save file
-*   `SPC + n` - toggle NerdTree
-*   `SPC + nf` - find file in NerdTree
-*   `SPC + tb` - toggle TagBar
+*   `SPC + [` - toggle NerdTree
+*   `SPC + ]` - toggle TagBar
+*   `SPC + SHIFT + [` - find file in NerdTree (or `SPC + {` )
 *   `SPC + f` - open fuzzy finder
 
-To explore the standard features of Vim, I recommend pressing `F1`.
+ To explore the standard features of Vim, I recommend pressing `F1`. <br>
+ If you don't know how to use NerdTree, toggle it, and press `?`.
 
 #### Work with code:
 *   `SPC + =` - auto format code
@@ -52,7 +53,8 @@ To explore the standard features of Vim, I recommend pressing `F1`.
 
 ## Features
 *   Simple modern config;
-*   Minimal requirements (not needed other fonts, support vim7+ etc);
+*   Minimal requirements (not needed patching fonts, support vim7+ etc);
+*   Support [110+ languages](https://github.com/sheerun/vim-polyglot);
 *   Syntax highlight;
 *   Syntax checking error's and warnings;
 *   Code completions;
@@ -69,7 +71,13 @@ To explore the standard features of Vim, I recommend pressing `F1`.
 *   File-tree navigation;
 *   Tag-bar (needed ctags);
 *   Fuzzy file finder;
-*   Markdown live server([livedown]);
+*   Markdown live server ([livedown]);
+
+## TODO
+*   EasyMotion integration;
+*   Add simplified go to definition feature;
+*   Add integration with [live-server];
+*   Add more features... (you can [suggest](mailto:thevadxx@gmail.com) me);
 
 ## Contribute
 ### Fork me on GitHub
@@ -80,7 +88,7 @@ I'm always happy to take pull requests from others.
 [Vim]:http://www.vim.org/download.php#pc
 [node.js]:https://nodejs.org/en/
 [live-server]:https://www.npmjs.com/package/live-server
-[demo]:./demo.png
+[demo]:./demo.png "Demo image (start page and c++ project example)"
 
 [Emmet]:https://github.com/mattn/emmet-vim
 [deoplete-clangx]:https://github.com/Shougo/deoplete-clangx

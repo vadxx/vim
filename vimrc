@@ -1,7 +1,7 @@
-" VIM CONFIG FILE 
+" VIM CONFIG FILE
 " Author: Anton Volkov - https://github.com/vadxx
 "
-"	MAPPINGS
+"   MAPPINGS
 " Make leader the spacebar key
 let mapleader = " "
 " Indent, keep selected text
@@ -11,26 +11,22 @@ vmap > >gv
 nmap <Leader>q :q!<CR>
 " SPC + S  Save file
 nmap <Leader>s :w<CR>
-" Switch between header/source with F6
-map <F6> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
-" SPC + N  Nerd Tree Toggle
-map <Leader>n :NERDTreeToggle<CR>
-" SPC + NF  Nerd Tree Toggle
-map <Leader>nf :NERDTreeFind<cr>
-" SPC + TB  TagBar
-nmap <Leader>tb :TagbarToggle<CR>
+" SPC + [  Nerd Tree Toggle
+map <Leader>[ :NERDTreeToggle<CR>
+" SPC + Shift + [  Nerd Tree Toggle
+map <Leader>{ :NERDTreeFind<cr>
+" SPC + ] TagBar
+nmap <Leader>] :TagbarToggle<CR>
 " SPC + F  Show files menu
 map <Leader>f :Files<CR>
 " SPC + C  Comment line or lines
 nmap <Leader>c <plug>NERDCommenterToggle
 vmap <Leader>c <plug>NERDCommenterToggle gv
-nmap <Leader>C <plug>NERDCommenterToggle
-vmap <Leader>C <plug>NERDCommenterToggle gv
 " SPC + W  Window navigations
 nmap <Leader>\ :vsplit<CR>
 nmap <Leader>- :split<CR>
 nmap <Leader>t :tabnew<CR>
-" CTRL + E  Call Emmet 
+" CTRL + E  Call Emmet
 let g:user_emmet_expandabbr_key = '<C-e>'
 " SPC + 1...9  Go to that tab
 map <silent> <Leader>1 1gt
@@ -48,10 +44,7 @@ noremap <Leader>= :Autoformat<CR>
 nmap <Leader>ld :LivedownToggle<CR>
 " SPC + BG  Toggle Light/Dark background
 nmap <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
-" Clear highlighting on escape in normal mode
-nnoremap <esc> :noh<return><esc>
-nnoremap <esc>^[ <esc>^[
-"	PLUGINS
+"   PLUGINS
 call plug#begin('~/.vim/plugged')
 " Support for a lot of languages
 Plug 'sheerun/vim-polyglot'
@@ -88,11 +81,12 @@ Plug 'ap/vim-css-color'
 " Search
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'easymotion/vim-easymotion'
 " Extra
 Plug 'shime/vim-livedown'  " live-server
 " Initialize plugin system
 call plug#end()
-"	SETTINGS
+"   SETTINGS
 " Default encoding
 set encoding=UTF-8
 " Set tabs to have 4 spaces
@@ -106,7 +100,7 @@ set expandtab
 set shiftwidth=4
 " Show the matching part of the pair for [] {} and ()
 set showmatch
-"	LOOK
+"   LOOK
 color gruvbox
 set background=dark
 let g:lightline = {'colorscheme': 'seoul256'}
@@ -119,7 +113,7 @@ set cursorline
 set showtabline=2
 " Show tabs
 set listchars=tab:│·,trail:_
-let g:indentLine_color_dark = 1 
+let g:indentLine_color_dark = 1
 "   COMPLETE
 let g:deoplete#enable_at_startup = 1
 "   SYNTAX
@@ -127,7 +121,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_aggregate_errors = 1
-"	SEARCH
+"   SEARCH
 " Search as characters are entered
 set incsearch
 " Highlight matches
@@ -135,7 +129,7 @@ set hlsearch
 " Better searching
 set ignorecase
 set smartcase
-"	EXTRA
+"   EXTRA
 " Enable file type detection and do language-dependent indenting.
 filetype plugin indent on
 " Always show status line
@@ -179,3 +173,6 @@ let @/ = ""
 map ; :
 " Disable preview mode
 set completeopt-=preview
+" Cursor
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
