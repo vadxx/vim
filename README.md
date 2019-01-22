@@ -3,9 +3,15 @@ The simple and fast Vim configuration for c/c++, python, php, html/css, javascri
 ![demo]
 
 ## Installation (with dependecies)
+Via **wget**:
 ```bash
-cd ~ && git clone https://github.com/vadxx/vim .vim && sh ~/.vim/install.sh
+wget -O - https://raw.githubusercontent.com/vadxx/vim/master/install.sh | bash
 ```
+Via **curl**:
+```bash
+curl https://raw.githubusercontent.com/vadxx/vim/master/install.sh | bash
+```
+
 #### Optional dependecies:
 For python style guide help:
 ```
