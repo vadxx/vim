@@ -62,15 +62,7 @@ Plug 'ervandew/supertab'
 Plug 'mattn/emmet-vim'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
-" Deoplete
-Plug 'roxma/nvim-yarp' | Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'Shougo/deoplete.nvim'
-Plug 'Shougo/neco-Syntax'
-Plug 'xaizek/vim-inccomplete'
-Plug 'Shougo/deoplete-clangx'
-Plug 'artur-shaik/vim-javacomplete2'
-Plug 'zchee/deoplete-jedi' " Python
-Plug 'lvht/phpcd.vim'
+Plug 'maralla/completor.vim'
 " Snippets
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " Syntax

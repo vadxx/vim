@@ -9,15 +9,10 @@ then
   echo Detected 'apt-get': Installing packages from there.
   echo
 
-  # Update and install basic dependencies
-
-  sudo apt-get update -y
-  sudo apt-get install -y git
-  sudo apt-get install -y clang
+  # Install basic dependencies
   sudo apt-get install -y ctags
   sudo apt-get install -y python3
   sudo apt-get install -y vim
-  sudo apt-get install -y python3-pip
   echo "Done!"
 elif type brew > /dev/null 2> /dev/null
 then
@@ -32,14 +27,10 @@ then
     fi
   }
 
-  # Update and install basic dependencies
-  #xcode-select --install
-
-  brew_install git
+  # Install basic dependencies
   brew_install ctags
   brew_install vim
   brew_install python3
-  brew_install python3-pip
   echo "Done!"
 else
   echo "WARNING: Could not find package manager."
