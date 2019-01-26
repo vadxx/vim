@@ -13,6 +13,7 @@ then
   sudo apt-get install -y ctags
   sudo apt-get install -y python3
   sudo apt-get install -y vim
+  sudo apt-get install -y git
   echo "Done!"
 elif type brew > /dev/null 2> /dev/null
 then
@@ -36,12 +37,12 @@ else
   echo "WARNING: Could not find package manager."
   echo "Make sure necessary packages are installed."
 fi
-echo "Clonning Repository..."
-cd ~ && git clone https://github.com/vadxx/vimrc .vim
-echo "Linking with vim..."
+echo "Installing config vim..."
+wget -P ~/.vim/autoload/ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+wget -P ~/.vim/ https://raw.githubusercontent.com/vadxx/vim/master/vimrc
 ln -s ~/.vim/vimrc ~/.vimrc
 echo "Opening vim..."
-vi +PlugUpdate +qall!
+vi +PlugInstall +qall!
 vi +qall!
 echo "=============================="
 echo "           ENJOY!             "
