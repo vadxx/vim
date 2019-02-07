@@ -12,7 +12,7 @@ then
   # Install basic dependencies
   sudo apt-get install -y ctags
   sudo apt-get install -y python3
-  sudo apt-get install -y vim
+  sudo apt-get install -y vim-gtk
   sudo apt-get install -y git
   echo "Done!"
 elif type brew > /dev/null 2> /dev/null

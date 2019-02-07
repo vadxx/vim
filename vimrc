@@ -11,6 +11,8 @@ vmap > >gv
 nmap <Leader>q :q!<CR>
 " SPC + S  Save file
 nmap <Leader>s :w<CR>
+" SPC + X Save file and exit
+nmap <Leader>x :x<CR>
 " SPC + [  Nerd Tree Toggle
 map <Leader>[ :NERDTreeToggle<CR>
 " SPC + Shift + [  Nerd Tree Toggle
@@ -28,6 +30,9 @@ nmap <Leader>- :split<CR>
 nmap <Leader>t :tabnew<CR>
 " CTRL + E  Call Emmet
 let g:user_emmet_expandabbr_key = '<C-e>'
+" n and N  Go to prev/next result of finding
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
 " SPC + 1...9  Go to that tab
 map <silent> <Leader>1 1gt
 map <silent> <Leader>2 2gt
@@ -60,7 +65,6 @@ Plug 'morhetz/gruvbox'
 " Completions
 Plug 'ervandew/supertab'
 Plug 'mattn/emmet-vim'
-Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
 Plug 'maralla/completor.vim'
 " Snippets
@@ -107,20 +111,15 @@ set showtabline=2
 set listchars=tab:│·,trail:_
 let g:indentLine_color_dark = 1
 "   COMPLETE
-let g:deoplete#enable_at_startup = 1
+
 "   SYNTAX
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_aggregate_errors = 1
 "   SEARCH
-" Search as characters are entered
-set incsearch
-" Highlight matches
-set hlsearch
-" Better searching
-set ignorecase
-set smartcase
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
 "   EXTRA
 " Enable file type detection and do language-dependent indenting.
 filetype plugin indent on
@@ -133,19 +132,7 @@ map Q <Nop>
 noremap ;; ;
 " Adds x11 clipboard shortcuts
 vnoremap <C-c> "+y
-map <C-p> "+P
-" Get rid of uppercase trouble
-command! W w
-command! Q q
-command! WQ wq
-command! Wq wq
-command! WA wa
-command! Wa wa
-command! QA qa
-command! Qa qa
-command! WQA wqa
-command! WQa wqa
-command! Wqa wqa
+map <C-v> "+P
 " Disable vi compatibility (emulation of old bugs)
 set nocompatible
 " Mouse Support
