@@ -45,8 +45,6 @@ map <silent> <Leader>8 8gt
 map <silent> <Leader>9 9gt
 " SPC + I  Auto Format code
 noremap <Leader>= :Autoformat<CR>
-" SPC + LD Toggle  Live-Down Server
-nmap <Leader>ld :LivedownToggle<CR>
 " SPC + BG  Toggle Light/Dark background
 nmap <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 "   PLUGINS
@@ -75,12 +73,9 @@ Plug 'Chiel92/vim-autoformat'
 " Colors in css
 Plug 'ap/vim-css-color'
 " Search
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 Plug 'easymotion/vim-easymotion'
 " Extra
-Plug 'shime/vim-livedown'  " live-server
-" Initialize plugin system
+"
 call plug#end()
 "   SETTINGS
 " Default encoding
@@ -111,7 +106,7 @@ set showtabline=2
 set listchars=tab:│·,trail:_
 let g:indentLine_color_dark = 1
 "   COMPLETE
-
+"
 "   SYNTAX
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -142,7 +137,7 @@ set noshowmode
 " Fix delimitter in nerdtree
 let g:NERDTreeNodeDelimiter = "\u00a0"
 let NERDTreeIgnore=['CVS','\.dSYM$', '.git', '.DS_Store', '\.swp$', '\.swo$']
-"setting root dir in NT also sets VIM's cd
+" Setting root dir in NT also sets VIM's cd
 let NERDTreeChDirMode=2
 " Shows invisibles
 let g:NERDTreeShowHidden=1
