@@ -38,8 +38,10 @@ else
   echo "Make sure necessary packages are installed."
 fi
 echo "Installing config vim..."
-curl -o ~/.vim/autoload/ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-curl -o ~/.vim/ https://raw.githubusercontent.com/vadxx/vim/master/vimrc
+mkdir ~/.vim/
+mkdir ~/.vim/autoload/
+(cd ~/.vim/autoload/ && curl -O https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim)
+(cd ~/.vim/ && curl -O https://raw.githubusercontent.com/vadxx/vim/master/vimrc)
 ln -s ~/.vim/vimrc ~/.vimrc
 echo "Opening vim..."
 vi +PlugInstall +qall!
