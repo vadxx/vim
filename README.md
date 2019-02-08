@@ -18,11 +18,7 @@ sudo apt-get install python3 clang
 ```
 ##### macOS:
 ```
-brew install macvim ctags
-```
-###### Optional:
-```
-brew install python3
+brew install vim ctags
 ```
 
 For python style guide help:
