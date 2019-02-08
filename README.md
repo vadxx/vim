@@ -3,12 +3,28 @@ The simple and fast Vim configuration for c/c++, python, php, html/css, javascri
 ![demo]
 
 ## Installation
-Via **curl** (for macOS):
 ```bash
 curl https://raw.githubusercontent.com/vadxx/vim/master/install.sh | bash
 ```
 
-#### Optional dependecies:
+### Minimal dependencies:
+##### Ubuntu:
+```
+sudo apt-get install vim-gtk
+```
+###### Optional:
+```
+sudo apt-get install python3 clang
+```
+##### macOS:
+```
+brew install macvim ctags
+```
+###### Optional:
+```
+brew install python3
+```
+
 For python style guide help:
 ```
 pip3 install flake8
@@ -51,17 +67,13 @@ For comfort, instead of `:` you can use `;`.
 *   Support [110+ languages](https://github.com/sheerun/vim-polyglot);
 *   Syntax highlight;
 *   Syntax checking error's and warnings;
-*   Code completions;
+*   Code [completor] (please read docs);
 *   Code auto formatter;
 *   Snippets;
 *   Easy keybindings;
 *   Git integration;
 *   [Emmet];
 *   Code commender;
-*   GCC support;
-*   Python support;
-*   Java support;
-*   PHP support;
 *   File-tree navigation;
 *   Tag-bar (needed ctags);
 *   [EasyMotion];
@@ -80,10 +92,11 @@ I'm always happy to take pull requests from others.
 ```
 MIT
 ```
+[demo]:./demo.png "Demo image (start page and c++ project example)"
 [homebrew]:https://brew.sh
 [vim-plug]:https://github.com/junegunn/vim-plug
 [Vim]:http://www.vim.org/download.php#pc
 [EasyMotion]:https://github.com/easymotion/vim-easymotion
-[demo]:./demo.png "Demo image (start page and c++ project example)"
 [Emmet]:https://github.com/mattn/emmet-vim
-
+[live-server]:https://www.npmjs.com/package/live-server
+[completor]:https://github.com/maralla/completor.vim
