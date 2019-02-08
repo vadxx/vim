@@ -2,14 +2,10 @@
 The simple and fast Vim configuration for c/c++, python, php, html/css, javascript, java.
 ![demo]
 
-## Installation (with dependecies)
-Via **wget** (for Ubuntu):
-```bash
-wget -O - https://raw.githubusercontent.com/vadxx/vim/master/install_wget.sh | bash
-```
+## Installation
 Via **curl** (for macOS):
 ```bash
-curl https://raw.githubusercontent.com/vadxx/vim/master/install_curl.sh | bash
+curl https://raw.githubusercontent.com/vadxx/vim/master/install.sh | bash
 ```
 
 #### Optional dependecies:
