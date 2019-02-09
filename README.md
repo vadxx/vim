@@ -21,7 +21,7 @@ sudo apt-get install python3 clang
 brew install vim ctags
 ```
 ###### Optional:
-```
+
 For python style guide help:
 ```bash
 pip3 install flake8
