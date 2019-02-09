@@ -10,7 +10,7 @@ curl https://raw.githubusercontent.com/vadxx/vim/master/install.sh | bash
 ### Minimal dependencies:
 ##### Ubuntu:
 ```bash
-sudo apt-get install vim-nox
+sudo apt-get install curl git vim-gtk
 ```
 ###### Optional:
 ```bash
@@ -18,17 +18,15 @@ sudo apt-get install python3 clang
 ```
 ##### macOS:
 ```bash
-brew install ctags
+brew install vim ctags
 ```
+<br>
 ###### Optional:
-```bash
-brew install python
 ```
 For python style guide help:
 ```bash
 pip3 install flake8
 ```
-
 ## Keybindings (custom)
 For comfort, instead of `:` you can use `;`. 
 #### Base

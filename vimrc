@@ -1,5 +1,6 @@
-" VIM CONFIG FILE
+"   VIM CONFIG FILE
 " Author: Anton Volkov - https://github.com/vadxx
+"
 "   MAPPINGS
 " Make leader the spacebar key
 let mapleader = " "
@@ -125,19 +126,10 @@ map Q <Nop>
 " Still keep ability to repeat a go-to
 noremap ;; ;
 " Fix copy text to clipboard
-if system('uname -s') == "Darwin\n"
-    "macOS
-    nmap <C-c> :.w !pbcopy<CR><CR>
-    vmap <C-c> :w !pbcopy<CR><CR>
-    nmap <C-v> :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
-    imap <C-v> <Esc>:set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
-else
-    "linux
-    nmap <C-c> "+yy
-    vmap <C-c> "+y
-    nmap <C-v> "+pa
-    imap <C-v> <Esc>"+pa
-endif
+nmap <C-c> "+yy
+vmap <C-c> "+y
+nmap <C-v> "+pa
+imap <C-v> <Esc>"+pa
 " Disable vi compatibility (emulation of old bugs)
 set nocompatible
 " Mouse Support
