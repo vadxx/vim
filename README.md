@@ -20,7 +20,6 @@ sudo apt-get install python3 clang
 ```bash
 brew install vim ctags
 ```
-<br>
 ###### Optional:
 ```
 For python style guide help:
