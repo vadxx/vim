@@ -1,6 +1,5 @@
 " VIM CONFIG FILE
 " Author: Anton Volkov - https://github.com/vadxx
-"
 "   MAPPINGS
 " Make leader the spacebar key
 let mapleader = " "
@@ -57,7 +56,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
 Plug 'airblade/vim-gitgutter'
-Plug 'Yggdroot/indentLine'
 " Color
 Plug 'morhetz/gruvbox'
 " Completions
@@ -104,7 +102,6 @@ set cursorline
 set showtabline=2
 " Show tabs
 set listchars=tab:│·,trail:_
-let g:indentLine_color_dark = 1
 "   COMPLETE
 "
 "   SYNTAX
@@ -112,6 +109,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_aggregate_errors = 1
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_warning_symbol = "⚠"
 "   SEARCH
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
@@ -125,9 +124,20 @@ set backspace=indent,eol,start
 map Q <Nop>
 " Still keep ability to repeat a go-to
 noremap ;; ;
-" Adds x11 clipboard shortcuts
-vnoremap <C-c> "+y
-map <C-v> "+P
+" Fix copy text to clipboard
+if system('uname -s') == "Darwin\n"
+    "macOS
+    nmap <C-c> :.w !pbcopy<CR><CR>
+    vmap <C-c> :w !pbcopy<CR><CR>
+    nmap <C-v> :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
+    imap <C-v> <Esc>:set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
+else
+    "linux
+    nmap <C-c> "+yy
+    vmap <C-c> "+y
+    nmap <C-v> "+pa
+    imap <C-v> <Esc>"+pa
+endif
 " Disable vi compatibility (emulation of old bugs)
 set nocompatible
 " Mouse Support

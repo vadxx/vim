@@ -1,4 +1,4 @@
-# vim
+# VIM
 The simple and fast Vim configuration for c/c++, python, php, html/css, javascript, java.
 ![demo]
 
@@ -9,20 +9,23 @@ curl https://raw.githubusercontent.com/vadxx/vim/master/install.sh | bash
 
 ### Minimal dependencies:
 ##### Ubuntu:
-```
-sudo apt-get install vim-gtk
+```bash
+sudo apt-get install vim-nox
 ```
 ###### Optional:
-```
+```bash
 sudo apt-get install python3 clang
 ```
 ##### macOS:
+```bash
+brew install ctags
 ```
-brew install vim ctags
+###### Optional:
+```bash
+brew install python
 ```
-
 For python style guide help:
-```
+```bash
 pip3 install flake8
 ```
 
@@ -62,7 +65,7 @@ For comfort, instead of `:` you can use `;`.
 *   Minimal requirements (not needed patching fonts, support vim7+ etc);
 *   Support [110+ languages](https://github.com/sheerun/vim-polyglot);
 *   Syntax highlight;
-*   Syntax checking error's and warnings;
+*   Syntax checking error's and warnings (work after save changes);
 *   Code [completor] (please read docs);
 *   Code auto formatter;
 *   Snippets;
@@ -73,6 +76,7 @@ For comfort, instead of `:` you can use `;`.
 *   File-tree navigation;
 *   Tag-bar (needed ctags);
 *   [EasyMotion];
+*   Fixed old vim bugs (copy/paste to system clipboard etc);
 
 ## TODO
 *   Improve EasyMotion integration;
@@ -80,6 +84,10 @@ For comfort, instead of `:` you can use `;`.
 *   Add integration with [live-server];
 *   Add more features... (you can [suggest](mailto:thevadxx@gmail.com) me);
 
+## Uninstallation
+```bash
+rm -rf ~/.vim ~/.vimrc
+```
 ## Contribute
 ### Fork me on GitHub
 I'm always happy to take pull requests from others.
