@@ -20,12 +20,22 @@ sudo apt-get install python3 clang
 ```bash
 brew install vim ctags
 ```
-###### Optional:
-
+### Optional:
 For python style guide help:
 ```bash
 pip3 install flake8
 ```
+For markdown live server (install [node.js] first):
+```bash
+npm install -g livedown
+```
+And press `SPC + ld` in opened .md file in vim.
+
+You can use [live-server]:
+```bash
+npm install -g live-server
+```
+
 ## Keybindings (custom)
 For comfort, instead of `:` you can use `;`. 
 #### Base
@@ -41,6 +51,7 @@ For comfort, instead of `:` you can use `;`.
 #### Work with code:
 *   `SPC + =` - auto format code
 *   `SPC + c` - comment line(s)
+*   `SPC + r` - run code
 *   `CTRL + e` - call [Emmet]
 *   `CTRL + c` - copy text (global)
 *   `CTRL + v` - paste text (global)
@@ -51,34 +62,44 @@ For comfort, instead of `:` you can use `;`.
 *   `SPC + -` - split window horizontal
 *   `SPC + [1-9]` - go to that tab
 #### Searching:
+*   `CTRL + P` - find file
 *   `/` - search in code 
-*   `n` - go to next find
-*   `N` - go to prev find
+*   `n` - go to next find text
+*   `N` - go to prev find text
 #### Extra:
 *   `SPC + bg` - toggle light/dark theme
+*   `SPC + ld` - togge [livedown]
 
 ## Features
 *   Simple modern config;
+*   Easy keybindings;
 *   Minimal requirements (not needed patching fonts, support vim7+ etc);
 *   Support [110+ languages](https://github.com/sheerun/vim-polyglot);
 *   Syntax highlight;
-*   Syntax checking error's and warnings (work after save changes);
-*   Code [completor] (please read docs);
-*   Code auto formatter;
-*   Snippets;
-*   Easy keybindings;
-*   Git integration;
-*   [Emmet];
-*   Code commender;
+*   Syntax checking error's and warnings (work after save changes in code);
 *   File-tree navigation;
 *   Tag-bar (needed ctags);
+*   Fuzzy file finder;
+*   Code [autocomplete] (please read docs);
+*   Clang support ([deoplete-clangx]);
+*   Python support ([jedi]);
+*   Java support ([javacomplete2]);
+*   PHP support ([phpcd]);
+*   Markdown live server ([livedown]);
+*   Code runner;
+*   Code auto formatter (indentation);
+*   Snippets;
+*   Version control systems (**git**, **mercurial**, **subversion** etc) integration;
+*   [Emmet];
+*   Code commender;
 *   [EasyMotion];
 *   Fixed old vim bugs (copy/paste to system clipboard etc);
 
 ## TODO
-*   Improve EasyMotion integration;
+*   ~~EasyMotion integration;~~
 *   Add simplified go to definition feature;
-*   Add integration with [live-server];
+*   Add integration with [live-server] (maybe write self plugin?);
+*   Replace java completions to quicker;
 *   Add more features... (you can [suggest](mailto:thevadxx@gmail.com) me);
 
 ## Uninstallation
@@ -97,7 +118,13 @@ MIT
 [homebrew]:https://brew.sh
 [vim-plug]:https://github.com/junegunn/vim-plug
 [Vim]:http://www.vim.org/download.php#pc
+[autocomplete]:https://github.com/Shougo/deoplete.nvim/wiki/Completion-Sources
 [EasyMotion]:https://github.com/easymotion/vim-easymotion
 [Emmet]:https://github.com/mattn/emmet-vim
+[node.js]:https://nodejs.org/en/
+[livedown]:https://github.com/shime/livedown
 [live-server]:https://www.npmjs.com/package/live-server
-[completor]:https://github.com/maralla/completor.vim
+[deoplete-clangx]:https://github.com/Shougo/deoplete-clangx
+[jedi]:https://github.com/zchee/deoplete-jedi
+[javacomplete2]:https://github.com/artur-shaik/vim-javacomplete2
+[phpcd]:https://github.com/lvht/phpcd.vim
