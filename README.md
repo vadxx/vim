@@ -10,34 +10,30 @@ curl https://raw.githubusercontent.com/vadxx/vim/master/install.sh | bash
 ### Minimal dependencies:
 ##### Ubuntu:
 ```bash
-sudo apt-get install curl git vim-gtk
+sudo apt-get install curl git vim-gtk clang
 ```
-###### Optional:
+##### macOS (use [homebrew]):
 ```bash
-sudo apt-get install python3 clang
-```
-##### macOS:
-```bash
-brew install vim ctags
+brew install macvim ctags
 ```
 ### Optional:
-For python style guide help:
+For improve python support:
 ```bash
-pip3 install flake8
+pip3 install flake8 jedi
 ```
+
 For markdown live server (install [node.js] first):
 ```bash
 npm install -g livedown
 ```
-And press `SPC + ld` in opened .md file in vim.
-
+And press `SPC + ld` in opened .md file in vim.  
 You can use [live-server]:
 ```bash
 npm install -g live-server
 ```
 
 ## Keybindings (custom)
-For comfort, instead of `:` you can use `;`. 
+For usability, instead of `:` you can use `;`. 
 #### Base
 *   `SPC + q` - exit from window
 *   `SPC + s` - save file
@@ -45,7 +41,7 @@ For comfort, instead of `:` you can use `;`.
 *   `SPC + ]` - toggle TagBar
 *   `SPC + SHIFT + [` - find file in NerdTree (or `SPC + {` )
 
- To explore the standard features of Vim, I recommend pressing `F1`. <br>
+ To explore the standard features of Vim, I recommend pressing `F1`.  
  If you don't know how to use NerdTree, toggle it, and press `?`.
 
 #### Work with code:
@@ -81,10 +77,9 @@ For comfort, instead of `:` you can use `;`.
 *   Tag-bar (needed ctags);
 *   Fuzzy file finder;
 *   Code [autocomplete] (please read docs);
-*   Clang support ([deoplete-clangx]);
-*   Python support ([jedi]);
-*   Java support ([javacomplete2]);
-*   PHP support ([phpcd]);
+*   Clang support;
+*   Python support ([jedi], install `flake8` and  `jedi` using `pip`);
+*   Java support ([javacomplete2], install `java8-jdk`);
 *   Markdown live server ([livedown]);
 *   Code runner;
 *   Code auto formatter (indentation);
@@ -97,9 +92,10 @@ For comfort, instead of `:` you can use `;`.
 
 ## TODO
 *   ~~EasyMotion integration;~~
-*   Add simplified go to definition feature;
+*   Add simplified go-to definition feature;
 *   Add integration with [live-server] (maybe write self plugin?);
-*   Replace java completions to quicker;
+*   ~~Replace java completions to quicker~~;
+*   Improve speed opening java-files;
 *   Add more features... (you can [suggest](mailto:thevadxx@gmail.com) me);
 
 ## Uninstallation
@@ -118,13 +114,11 @@ MIT
 [homebrew]:https://brew.sh
 [vim-plug]:https://github.com/junegunn/vim-plug
 [Vim]:http://www.vim.org/download.php#pc
-[autocomplete]:https://github.com/Shougo/deoplete.nvim/wiki/Completion-Sources
+[autocomplete]:https://github.com/maralla/completor.vim
 [EasyMotion]:https://github.com/easymotion/vim-easymotion
 [Emmet]:https://github.com/mattn/emmet-vim
 [node.js]:https://nodejs.org/en/
 [livedown]:https://github.com/shime/livedown
 [live-server]:https://www.npmjs.com/package/live-server
-[deoplete-clangx]:https://github.com/Shougo/deoplete-clangx
-[jedi]:https://github.com/zchee/deoplete-jedi
 [javacomplete2]:https://github.com/artur-shaik/vim-javacomplete2
-[phpcd]:https://github.com/lvht/phpcd.vim
+[jedi]:https://jedi.readthedocs.io/en/latest/
