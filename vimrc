@@ -83,6 +83,9 @@ set showtabline=2   " Show tab line
 "   COMPLETE
 set wildmenu
 let g:completor_java_omni_trigger='([^. \t0-9].\w*)' | au FileType java setlocal omnifunc=javacomplete#Complete
+if system('uname -s') == "Linux\n"
+    let g:completor_python_binary = '/usr/bin/python3'
+endif
 "   SYNTAX
 let g:syntastic_always_populate_loc_list=1 | let g:syntastic_auto_loc_list=1
 let g:syntastic_check_on_open=1  | let g:syntastic_aggregate_errors=1
