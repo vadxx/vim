@@ -94,8 +94,12 @@ For usability, instead of `:` you can use `;`.
 *   ~~EasyMotion integration;~~
 *   Add simplified go-to definition feature;
 *   Add integration with [live-server] (maybe write self plugin?);
-*   ~~Replace java completions to quicker~~;
-*   Improve speed opening java-files;
+*   ~~Replace java completions to quicker~~ ok, but need to improve speed opening a java-file;
+*   Improve php support;
+*   Improve js/ts support;
+*   Add debugger feature... (maybe add gdb-support);
+*   Write a project website;
+*   Add installer for neovim;
 *   Add more features... (you can [suggest](mailto:thevadxx@gmail.com) me);
 
 ## Uninstallation
