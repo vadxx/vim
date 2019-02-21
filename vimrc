@@ -54,10 +54,11 @@ map <silent> <Leader>9 9gt
 "
 call plug#begin('~/.vim/plugged')
 Plug 'sheerun/vim-polyglot'         " Support for a lot of languages
-Plug 'lifepillar/vim-gruvbox8'      " Another good Color scheme
-Plug 'tomasr/molokai'               " Another scheme
-Plug 'itchyny/lightline.vim'        " Bottom Line
-Plug 'mhinz/vim-signify'            " See changes of file in repo Git, hg etc
+Plug 'mhinz/vim-startify'           " Better start screen
+Plug 'lifepillar/vim-gruvbox8'      " Good color scheme
+Plug 'tomasr/molokai'               " Another good color scheme
+Plug 'itchyny/lightline.vim'        " Bottom status line
+Plug 'mhinz/vim-signify'            " See changes of file in local repo git, hg etc
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'majutsushi/tagbar',   { 'on': 'TagbarToggle' }
 Plug 'jiangmiao/auto-pairs'
