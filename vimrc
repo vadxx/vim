@@ -19,11 +19,11 @@ map <Leader>r <Plug>(quickrun)
 " SPC + [  Nerd Tree Toggle
 map <Leader>[ :NERDTreeToggle<CR>
 " SPC + Shift + [  Nerd Tree Toggle s
-map <Leader>{ :NERDTreeFind<cr>
+map <Leader>{ :NERDTreeFind<CR>
 " SPC + ]  Toggle Funky
-nmap <Leader>] :TagbarToggle<CR>
-" SPC + F  Show files menu
-map <Leader>f :Files<CR>
+nnoremap <Leader>] :CtrlPFunky<CR>
+" SPC + Shift + ] Narrow the list down with a word under cursor
+nnoremap <Leader>} :execute 'CtrlPFunky ' . expand('<cword>')<CR>
 " SPC + C  Comment line or lines
 nmap <Leader>c <plug>NERDCommenterToggle
 vmap <Leader>c <plug>NERDCommenterToggle gv
@@ -56,24 +56,24 @@ call plug#begin('~/.vim/plugged')
 Plug 'sheerun/vim-polyglot'         " Support for a lot of languages
 Plug 'mhinz/vim-startify'           " Better start screen
 Plug 'lifepillar/vim-gruvbox8'      " Good color scheme
-Plug 'tomasr/molokai'               " Another good color scheme
 Plug 'itchyny/lightline.vim'        " Bottom status line
 Plug 'mhinz/vim-signify'            " See changes of file in local repo git, hg etc
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
-Plug 'majutsushi/tagbar',   { 'on': 'TagbarToggle' }
 Plug 'jiangmiao/auto-pairs'
-Plug 'scrooloose/nerdcommenter'
-Plug 'mattn/emmet-vim', { 'for': ['html', 'javascript', 'php', 'xml'] }
-Plug 'ap/vim-css-color',{ 'for': ['css', 'scss', 'sass', 'less', 'stylus'] }
+Plug 'scrooloose/nerdcommenter'     " For comment line(s)
+Plug 'mattn/emmet-vim',  { 'for': ['html', 'javascript', 'php', 'xml'] }
+Plug 'ap/vim-css-color', { 'for': ['css', 'scss', 'sass', 'less', 'stylus'] }
 Plug 'SirVer/ultisnips'             " Snippet engine
 Plug 'honza/vim-snippets'           " Snippets
 Plug 'scrooloose/syntastic'         " Syntax checker
 Plug 'Chiel92/vim-autoformat'       " Indent fix on file
 Plug 'easymotion/vim-easymotion'    " Searh in file
 Plug 'ctrlpvim/ctrlp.vim'           " Search files
+Plug 'tacahiroy/ctrlp-funky', { 'on': 'CtrlPFunky' }  " Search functions
 Plug 'maralla/completor.vim'        " Async complete engine
-Plug 'artur-shaik/vim-javacomplete2', {'for': 'java'}
-Plug 'shime/vim-livedown', { 'for': 'markdown' }
+"Plug 'artur-shaik/vim-javacomplete2', {'for': 'java'} " Java improve
+Plug 'shime/vim-livedown', { 'for': 'markdown' } " Install Node & this: npm install -g livedown
+Plug 'kana/vim-fakeclip'            " Fix clipboard
 call plug#end()
 "
 "   SETTINGS
@@ -90,7 +90,7 @@ set autoread        " Set to auto read when a file is changed from the outside
 syntax on
 set background=dark
 color gruvbox8      " Good color scheme
-"color molokai
+let g:lightline = {'colorscheme': 'seoul256'} " Status line color scheme
 set number          " Show numbers of lines
 set relativenumber  " Better info of line (use j,k for navigate)
 set cursorline      " Show current line
@@ -105,8 +105,8 @@ set wildmenu
 let g:completor_java_omni_trigger = '([^. \t0-9].\w*)' " Java improve
 autocmd FileType java setlocal omnifunc=javacomplete#Complete " Please install java-jdk
 if system('uname -s') == "Linux\n"                     " Python improve
-    let g:completor_python_binary = '/usr/bin/python3' " Please install Jedi
-endif                                                  " pip3 install jedi
+    let g:completor_python_binary = '/usr/bin/python3' " Please install Jedi:
+endif                                                  " pip install jedi
 "   SYNTAX
 let g:cpp_class_scope_highlight = 1
 let g:cpp_class_decl_highlight = 1  " C/C++ improve
@@ -124,6 +124,7 @@ function! SyntasticCheckHook(errors) " For optimize size a list of errors and wa
     endif
 endfunction
 "   SEARCH
+let g:ctrlp_cmd = 'CtrlPMixed'  " Improved behavior CtrlP
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 "   EXTRA

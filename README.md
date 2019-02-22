@@ -12,15 +12,12 @@ curl https://raw.githubusercontent.com/vadxx/vim/master/install.sh | bash
 ```bash
 sudo apt-get install curl git vim-gtk clang
 ```
-##### macOS (use [homebrew]):
-```bash
-brew install macvim ctags
-```
 ### Optional:
 For improve python support:
 ```bash
-pip3 install flake8 jedi
+pip install flake8 jedi
 ```
+If you use Mac: `sudo easy_install pip`
 
 For markdown live server (install [node.js] first):
 ```bash
@@ -38,9 +35,10 @@ For usability, instead of `:` you can use `;`.
 *   `SPC + q` - exit from window
 *   `SPC + s` - save file
 *   `SPC + [` - toggle NerdTree
-*   `SPC + ]` - toggle TagBar
-*   `SPC + SHIFT + [` - find file in NerdTree (or `SPC + {` )
-
+*   `SPC + ]` - toggle Funky (functions definition finder in souce-code)
+*   `SPC + SHIFT + [` - find current opened file using NerdTree (or `SPC + {` )
+*   `SPC + SHIFT + ]` - find definition of function under cursor using Funky (or `SPC + }`)
+*
  To explore the standard features of Vim, I recommend pressing `F1`.  
  If you don't know how to use NerdTree, toggle it, and press `?`.
 
@@ -79,7 +77,7 @@ For usability, instead of `:` you can use `;`.
 *   Code [autocomplete] (please read docs);
 *   Clang support;
 *   Python support ([jedi], install `flake8` and  `jedi` using `pip`);
-*   Java support ([javacomplete2], install `java8-jdk`);
+*   Java support (~~[javacomplete2]~~ snippets, syntax highlight and check; install `java8-jdk`);
 *   Markdown live server ([livedown]);
 *   Code runner;
 *   Code auto formatter (indentation);
@@ -92,13 +90,12 @@ For usability, instead of `:` you can use `;`.
 
 ## TODO
 *   ~~EasyMotion integration;~~
-*   Add simplified go-to definition feature;
+*   ~~Add simplified go-to definition feature~~. Now work only in source-file. How can better?;
 *   Add integration with [live-server] (maybe write self plugin?);
-*   ~~Replace java completions to quicker~~ ok, but need to improve speed opening a java-file;
-*   Improve php support;
-*   Improve js/ts support;
-*   Add debugger feature... (maybe add gdb-support);
+*   Improve Java support (or fix speed of running [javacomplete2])
+*   Improve JavaScript/TypeScript support;
 *   Write a project website;
+*   Add debugger feature... (maybe add gdb-support);
 *   Add installer for neovim;
 *   Add more features... (you can [suggest](mailto:thevadxx@gmail.com) me);
 
