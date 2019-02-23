@@ -1,7 +1,9 @@
 # VIM
 The simple and fast Vim configuration for c/c++, python, php, html/css, javascript, java.<br>
-![demo_start]|![demo_cpp]
-:---:|:---:
+
+| Start Screen  | Work with C++ |
+| ------------- | ------------- |
+| ![demo_start] |  ![demo_cpp]  |
 
 ## Installation
 ```bash
