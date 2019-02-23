@@ -1,4 +1,3 @@
-"   VIM CONFIG FILE
 "   Author: Anton Volkov - https://github.com/vadxx
 "
 "   MAPPINGS
@@ -73,7 +72,7 @@ Plug 'tacahiroy/ctrlp-funky', { 'on': 'CtrlPFunky' }  " Search functions
 Plug 'maralla/completor.vim'        " Async complete engine
 "Plug 'artur-shaik/vim-javacomplete2', {'for': 'java'} " Java improve
 Plug 'shime/vim-livedown', { 'for': 'markdown' } " Install Node & this: npm install -g livedown
-Plug 'kana/vim-fakeclip'            " Fix clipboard
+Plug 'christoomey/vim-system-copy'  " Fix copy to system clipboard
 call plug#end()
 "
 "   SETTINGS
@@ -98,8 +97,8 @@ set showtabline=2   " Show tab line (always)
 "   NERDTREE
 let g:NERDTreeNodeDelimiter = "\u00a0"  " Fix delimitter in nerdtree
 let g:NERDTreeIgnore=['CVS','\.dSYM$', '.git', '.DS_Store', '\.swp$', '\.swo$']
-let g:NERDTreeChDirMode = 2       " Setting root dir in NT also sets VIM's cd
-let g:NERDTreeShowHidden = 1      " Shows invisibles
+let g:NERDTreeChDirMode = 2             " Setting root dir in NT also sets VIM's cd
+let g:NERDTreeShowHidden = 1            " Shows invisibles
 "   COMPLETE
 set wildmenu
 let g:completor_java_omni_trigger = '([^. \t0-9].\w*)' " Java improve
@@ -134,11 +133,9 @@ set backspace=indent,eol,start  " Make backspace behave in a sane manner.
 map Q <Nop>
 " Still keep ability to repeat a go-to
 noremap ;; ;
-" Fix copy text to clipboard    (update vim or use macvim/vim-gtk)
-nmap <C-c> "+yy
-vmap <C-c> "+y
-nmap <C-v> "+pa
-imap <C-v> <Esc>"+pa
+" Fix copy text to clipboard    (paste text default for you system)
+map <C-c> cP
+vmap <C-c> cp
 set nocompatible                " Disable vi compatibility (emulation of old bugs)
 set lazyredraw                  " Don't redraw while executing macros (good performance config)
 set mouse=a                     " Mouse Support
@@ -147,6 +144,6 @@ let @/ = ""                     " Clear search pattern
 " For qwerty it is easier tu use ; than :
 map ; :
 let &t_SI = "\e[6 q"
-let &t_EI = "\e[2 q" " Cursor thin/bol
+let &t_EI = "\e[2 q" " Cursor thin/bold
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
