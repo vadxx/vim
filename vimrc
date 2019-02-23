@@ -57,22 +57,21 @@ Plug 'mhinz/vim-startify'           " Better start screen
 Plug 'lifepillar/vim-gruvbox8'      " Good color scheme
 Plug 'itchyny/lightline.vim'        " Bottom status line
 Plug 'mhinz/vim-signify'            " See changes of file in local repo git, hg etc
-Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
-Plug 'jiangmiao/auto-pairs'
-Plug 'scrooloose/nerdcommenter'     " For comment line(s)
-Plug 'mattn/emmet-vim',  { 'for': ['html', 'javascript', 'php', 'xml'] }
-Plug 'ap/vim-css-color', { 'for': ['css', 'scss', 'sass', 'less', 'stylus'] }
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } " File-tree with opt's
+Plug 'jiangmiao/auto-pairs'         " Auto close bracket's
+Plug 'scrooloose/nerdcommenter', { 'on': '<plug>NERDCommenterToggle' }   " For comment line(s)
+Plug 'mattn/emmet-vim',  { 'for': ['html', 'javascript', 'php', 'xml'] } " For Web-dev
+Plug 'ap/vim-css-color', { 'for': ['css', 'scss', 'sass', 'less', 'stylus'] } " Highlight color's
 Plug 'SirVer/ultisnips'             " Snippet engine
 Plug 'honza/vim-snippets'           " Snippets
 Plug 'scrooloose/syntastic'         " Syntax checker
-Plug 'Chiel92/vim-autoformat'       " Indent fix on file
+Plug 'Chiel92/vim-autoformat',{ 'on': 'Autoformat' }                     " Indent fix on file
 Plug 'easymotion/vim-easymotion'    " Searh in file
 Plug 'ctrlpvim/ctrlp.vim'           " Search files
-Plug 'tacahiroy/ctrlp-funky', { 'on': 'CtrlPFunky' }  " Search functions
+Plug 'tacahiroy/ctrlp-funky', { 'on': 'CtrlPFunky' }                     " Search functions
 Plug 'maralla/completor.vim'        " Async complete engine
 "Plug 'artur-shaik/vim-javacomplete2', {'for': 'java'} " Java improve
 Plug 'shime/vim-livedown', { 'for': 'markdown' } " Install Node & this: npm install -g livedown
-Plug 'christoomey/vim-system-copy'  " Fix copy to system clipboard
 call plug#end()
 "
 "   SETTINGS
@@ -89,7 +88,7 @@ set autoread        " Set to auto read when a file is changed from the outside
 syntax on
 set background=dark
 color gruvbox8      " Good color scheme
-let g:lightline = {'colorscheme': 'seoul256'} " Status line color scheme
+let g:lightline = { 'colorscheme': 'seoul256' }        " Status line color scheme
 set number          " Show numbers of lines
 set relativenumber  " Better info of line (use j,k for navigate)
 set cursorline      " Show current line
@@ -108,8 +107,8 @@ if system('uname -s') == "Linux\n"                     " Python improve
 endif                                                  " pip install jedi
 "   SYNTAX
 let g:cpp_class_scope_highlight = 1
-let g:cpp_class_decl_highlight = 1  " C/C++ improve
-let g:python_highlight_all = 1      " Python Improve
+let g:cpp_class_decl_highlight = 1                      " C/C++ improve
+let g:python_highlight_all = 1                          " Python Improve
 "   SYNTASTIC
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -133,9 +132,6 @@ set backspace=indent,eol,start  " Make backspace behave in a sane manner.
 map Q <Nop>
 " Still keep ability to repeat a go-to
 noremap ;; ;
-" Fix copy text to clipboard    (paste text default for you system)
-map <C-c> cP
-vmap <C-c> cp
 set nocompatible                " Disable vi compatibility (emulation of old bugs)
 set lazyredraw                  " Don't redraw while executing macros (good performance config)
 set mouse=a                     " Mouse Support
@@ -144,6 +140,21 @@ let @/ = ""                     " Clear search pattern
 " For qwerty it is easier tu use ; than :
 map ; :
 let &t_SI = "\e[6 q"
-let &t_EI = "\e[2 q" " Cursor thin/bold
+let &t_EI = "\e[2 q"            " Cursor thin/bold
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+" Fix copy text to system clipboard and paste from it (for ubuntu install xsel)
+if system('uname -s') == "Darwin\n"
+    map <C-c> :.w !pbcopy<CR><CR>
+    vmap <C-c> :w !pbcopy<CR><CR>
+    nmap <C-v> :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
+    imap <C-v> <Esc>:set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
+else
+    if system('uname -s') == "Linux\n"
+        map <C-c> :.w !xsel -b<CR><CR>
+        vmap <C-c> :w !xsel -b<CR><CR>
+        nmap <C-v> :r !xsel -p<CR>
+        imap <C-v> <Esc>:r !xsel -p<CR>
+    endif
+endif
+

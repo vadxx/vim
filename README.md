@@ -56,7 +56,8 @@ For usability, instead of `:` you can use `;`.
 *   `SPC + c` - comment line(s)
 *   `SPC + r` - run code
 *   `CTRL + e` - call [Emmet]
-*   `CTRL + c` - copy text to system clipboard (paste text is default for your OS)
+*   `CTRL + c` - copy text to system clipboard (work in normal and visual modes)
+*   `CTRL + v` - paste text from system clipboard (work in normal and visual modes)
 *   `<` and `>` - for indent line (or selected line)
 #### Window navigation:
 *   `SPC + t` - new tab
