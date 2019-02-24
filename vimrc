@@ -72,6 +72,7 @@ Plug 'tacahiroy/ctrlp-funky', { 'on': 'CtrlPFunky' }                     " Searc
 Plug 'maralla/completor.vim'        " Async complete engine
 "Plug 'artur-shaik/vim-javacomplete2', {'for': 'java'} " Java improve
 Plug 'shime/vim-livedown', { 'for': 'markdown' } " Install Node & this: npm install -g livedown
+Plug 'christoomey/vim-system-copy'
 call plug#end()
 "
 "   SETTINGS
@@ -144,17 +145,5 @@ let &t_EI = "\e[2 q"            " Cursor thin/bold
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 " Fix copy text to system clipboard and paste from it (for ubuntu install xsel)
-if system('uname -s') == "Darwin\n"
-    map <C-c> :.w !pbcopy<CR><CR>
-    vmap <C-c> :w !pbcopy<CR><CR>
-    nmap <C-v> :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
-    imap <C-v> <Esc>:set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
-else
-    if system('uname -s') == "Linux\n"
-        map <C-c> :.w !xsel -b<CR><CR>
-        vmap <C-c> :w !xsel -b<CR><CR>
-        nmap <C-v> :r !xsel -p<CR>
-        imap <C-v> <Esc>:r !xsel -p<CR>
-    endif
-endif
-
+nmap <C-c> cP
+vmap <C-c> cp

@@ -56,8 +56,7 @@ For usability, instead of `:` you can use `;`.
 *   `SPC + c` - comment line(s)
 *   `SPC + r` - run code
 *   `CTRL + e` - call [Emmet]
-*   `CTRL + c` - copy text to system clipboard (work in normal and visual modes)
-*   `CTRL + v` - paste text from system clipboard (work in normal and visual modes)
+*   `CTRL + c` - copy text to system clipboard (for ubuntu install `xsel`)
 *   `<` and `>` - for indent line (or selected line)
 #### Window navigation:
 *   `SPC + t` - new tab
@@ -81,8 +80,8 @@ For usability, instead of `:` you can use `;`.
 *   Syntax highlight;
 *   Syntax checking error's and warnings (work after save changes in code);
 *   File-tree navigation;
-*   Tag-bar (needed ctags);
-*   Fuzzy file finder;
+*   List of function's declaration (in source code);
+*   File finder;
 *   Code [autocomplete] (please read docs);
 *   Clang support;
 *   Python support ([jedi], install `flake8` and  `jedi` using `pip`);
@@ -119,8 +118,8 @@ I'm always happy to take pull requests from others.
 ```
 MIT
 ```
-[demo_start]:./demo_start.png "Demo start screen"
-[demo_cpp]:./demo_cpp.png "Demo work with C++"
+[demo_start]:./images/demo_start.png "Demo start screen"
+[demo_cpp]:./images/demo_cpp.png "Demo work with C++"
 [vim-plug]:https://github.com/junegunn/vim-plug
 [Vim]:http://www.vim.org/download.php#pc
 [autocomplete]:https://github.com/maralla/completor.vim
