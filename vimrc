@@ -57,25 +57,24 @@ Plug 'mhinz/vim-startify'           " Better start screen
 Plug 'lifepillar/vim-gruvbox8'      " Good color scheme
 Plug 'itchyny/lightline.vim'        " Bottom status line
 Plug 'mhinz/vim-signify'            " See changes of file in local repo git, hg etc
-Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } " File-tree with opt's
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } " File-tree
 Plug 'Raimondi/delimitMate'         " Auto close bracket's
 Plug 'scrooloose/nerdcommenter', { 'on': '<plug>NERDCommenterToggle' }   " For comment line(s)
 Plug 'mattn/emmet-vim',  { 'for': ['html', 'javascript', 'php', 'xml'] } " For Web-dev
-Plug 'ap/vim-css-color', { 'for': ['css', 'scss', 'sass', 'less', 'stylus'] } " Highlight color's
+Plug 'ap/vim-css-color', { 'for': ['css', 'scss', 'sass', 'less', 'stylus'] }
 Plug 'SirVer/ultisnips'  | Plug 'honza/vim-snippets'                     " Snippets and Engine
 Plug 'scrooloose/syntastic'         " Syntax checker
 Plug 'Chiel92/vim-autoformat',{ 'on': 'Autoformat' }                     " Indent fix on file
 Plug 'easymotion/vim-easymotion'    " Searh in file
 Plug 'ctrlpvim/ctrlp.vim'           " Search files
 Plug 'tacahiroy/ctrlp-funky', { 'on': 'CtrlPFunky' }                     " Search functions
-Plug 'shime/vim-livedown', { 'for': 'markdown' } " Install Node & this: npm install -g livedown
+Plug 'shime/vim-livedown', { 'for': 'markdown' } " Install Node and: npm install -g livedown
 Plug 'christoomey/vim-system-copy'
 " Auto Complete
-Plug 'prabirshrestha/asyncomplete.vim' | Plug 'prabirshrestha/async.vim' " Autocomplete Engine
+Plug 'prabirshrestha/asyncomplete.vim'| Plug 'prabirshrestha/async.vim'  " Autocomplete Engine
 Plug 'prabirshrestha/asyncomplete-file.vim'
 Plug 'prabirshrestha/asyncomplete-buffer.vim'
 Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
-Plug 'prabirshrestha/vim-lsp' | Plug 'prabirshrestha/asyncomplete-lsp.vim' " LSP Support
 Plug 'keremc/asyncomplete-clang.vim', { 'for': ['c', 'cpp' ] }
 call plug#end()
 "
@@ -87,7 +86,7 @@ set softtabstop=4   " Set tabs to have 4 spaces
 set autoindent      " Indent when moving to the next line while writing code
 set expandtab       " Expand tabs into spaces
 set shiftwidth=4    " When using the >> or << commands, shift lines by 4 spaces
-set showmatch       " Show the matching part of the pair for [] {} and ()
+set showmatch       " Show the matching part of the pair for brackets
 set autoread        " Set to auto read when a file is changed from the outside
 "   LOOK
 syntax on
@@ -105,8 +104,8 @@ let g:NERDTreeChDirMode = 2             " Setting root dir in NT also sets VIM's
 let g:NERDTreeShowHidden = 1            " Shows invisibles
 "   SYNTAX
 let g:cpp_class_scope_highlight = 1
-let g:cpp_class_decl_highlight = 1                      " C/C++ improve
-let g:python_highlight_all = 1                          " Python Improve
+let g:cpp_class_decl_highlight = 1      " C/C++ improve
+let g:python_highlight_all = 1          " Python Improve
 "   SYNTASTIC
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -162,7 +161,6 @@ inoremap <silent><expr> <TAB>
             \ asyncomplete#force_refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-" Register sources
 " File/Directories
 au User asyncomplete_setup call asyncomplete#register_source(
             \ asyncomplete#sources#file#get_source_options({
@@ -184,10 +182,3 @@ autocmd User asyncomplete_setup call asyncomplete#register_source(
 " C/C++
 autocmd User asyncomplete_setup call asyncomplete#register_source(
             \ asyncomplete#sources#clang#get_source_options())
-"   LANG SERVERS
-" Python
-if executable('pyls') " sudo -H pip3 install python-language-server
-    au User lsp_setup call lsp#register_server({
-                \ 'name': 'pyls', 'cmd': {server_info->['pyls']}, 'whitelist': ['python'],
-                \ })
-endif

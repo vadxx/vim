@@ -25,7 +25,7 @@ Nothing. This config fully works with default system vim.
 ### Optional:
 For improve [Python] support:
 ```bash
-sudo -H pip3 install flake8 python-language-server
+sudo -H pip3 install flake8
 ```
 For markdown live server (install [node.js] first):
 ```bash
@@ -81,9 +81,8 @@ For usability, instead of `:` you can use `;`.
 *   List of function's declaration (in source code);
 *   File finder;
 *   Code [autocomplete] (please read docs);
-*   Integrated [Language Server Protocol][vim-lsp] (you can add more [servers](https://langserver.org));
 *   Clang support;
-*   Python support (`pyls`, `flake8`);
+*   Python support (`flake8`);
 *   Markdown live server ([livedown]);
 *   Code auto formatter (indent's);
 *   Snippets;
@@ -95,14 +94,8 @@ For usability, instead of `:` you can use `;`.
 
 ## TODO
 *   ~~EasyMotion integration;~~
-*   ~~Add simplified go-to definition feature~~. Added [vim-lsp], but need integrate to more langs;
-*   Improve JavaScript/TypeScript support;
-*   Improve C/C++ (integrate support with [vim-lsp]);
-*   Add integration with [live-server] (maybe write self plugin?);
 *   Write a project website;
-*   Add debugger feature... (maybe add gdb-support);
 *   Add installer for neovim;
-*   Add more features... (you can [suggest](mailto:thevadxx@gmail.com) me);
 
 ## Uninstallation
 ```bash
@@ -125,6 +118,5 @@ MIT
 [livedown]:https://github.com/shime/livedown
 [live-server]:https://www.npmjs.com/package/live-server
 [autocomplete]:https://github.com/prabirshrestha/asyncomplete.vim
-[vim-lsp]:https://github.com/prabirshrestha/vim-lsp
 [EasyMotion]:https://github.com/easymotion/vim-easymotion
 [Emmet]:https://github.com/mattn/emmet-vim
