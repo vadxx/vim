@@ -23,12 +23,10 @@ If you are programming in C/C++, install `clang`.
 ##### Mac:
 Nothing. This config fully works with default system vim.
 ### Optional:
-For improve python support:
+For improve [Python] support:
 ```bash
-pip install flake8 jedi
+sudo -H pip3 install flake8 python-language-server
 ```
-If you are using a Mac: `sudo easy_install pip`
-
 For markdown live server (install [node.js] first):
 ```bash
 npm install -g livedown
@@ -83,9 +81,9 @@ For usability, instead of `:` you can use `;`.
 *   List of function's declaration (in source code);
 *   File finder;
 *   Code [autocomplete] (please read docs);
+*   Integrated [Language Server Protocol][vim-lsp] (you can add more [servers](https://langserver.org));
 *   Clang support;
-*   Python support ([jedi], install `flake8` and  `jedi` using `pip`);
-*   Java support (~~[javacomplete2]~~ snippets, syntax highlight and check; install `java8-jdk`);
+*   Python support (`pyls`, `flake8`);
 *   Markdown live server ([livedown]);
 *   Code auto formatter (indent's);
 *   Snippets;
@@ -97,10 +95,10 @@ For usability, instead of `:` you can use `;`.
 
 ## TODO
 *   ~~EasyMotion integration;~~
-*   ~~Add simplified go-to definition feature~~. Now work only in source-file (how can do better?);
-*   Add integration with [live-server] (maybe write self plugin?);
-*   Improve Java support (or fix speed of running [javacomplete2])
+*   ~~Add simplified go-to definition feature~~. Added [vim-lsp], but need integrate to more langs;
 *   Improve JavaScript/TypeScript support;
+*   Improve C/C++ (integrate support with [vim-lsp]);
+*   Add integration with [live-server] (maybe write self plugin?);
 *   Write a project website;
 *   Add debugger feature... (maybe add gdb-support);
 *   Add installer for neovim;
@@ -122,11 +120,11 @@ MIT
 [demo_cpp]:./images/demo_cpp.png "Demo work with C++"
 [vim-plug]:https://github.com/junegunn/vim-plug
 [Vim]:http://www.vim.org/download.php#pc
-[autocomplete]:https://github.com/maralla/completor.vim
-[EasyMotion]:https://github.com/easymotion/vim-easymotion
-[Emmet]:https://github.com/mattn/emmet-vim
+[Python]:https://www.python.org
 [node.js]:https://nodejs.org/en/
 [livedown]:https://github.com/shime/livedown
 [live-server]:https://www.npmjs.com/package/live-server
-[javacomplete2]:https://github.com/artur-shaik/vim-javacomplete2
-[jedi]:https://jedi.readthedocs.io/en/latest/
+[autocomplete]:https://github.com/prabirshrestha/asyncomplete.vim
+[vim-lsp]:https://github.com/prabirshrestha/vim-lsp
+[EasyMotion]:https://github.com/easymotion/vim-easymotion
+[Emmet]:https://github.com/mattn/emmet-vim

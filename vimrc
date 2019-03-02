@@ -58,21 +58,25 @@ Plug 'lifepillar/vim-gruvbox8'      " Good color scheme
 Plug 'itchyny/lightline.vim'        " Bottom status line
 Plug 'mhinz/vim-signify'            " See changes of file in local repo git, hg etc
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } " File-tree with opt's
-Plug 'jiangmiao/auto-pairs'         " Auto close bracket's
+Plug 'Raimondi/delimitMate'         " Auto close bracket's
 Plug 'scrooloose/nerdcommenter', { 'on': '<plug>NERDCommenterToggle' }   " For comment line(s)
 Plug 'mattn/emmet-vim',  { 'for': ['html', 'javascript', 'php', 'xml'] } " For Web-dev
 Plug 'ap/vim-css-color', { 'for': ['css', 'scss', 'sass', 'less', 'stylus'] } " Highlight color's
-Plug 'SirVer/ultisnips'             " Snippet engine
-Plug 'honza/vim-snippets'           " Snippets
+Plug 'SirVer/ultisnips'  | Plug 'honza/vim-snippets'                     " Snippets and Engine
 Plug 'scrooloose/syntastic'         " Syntax checker
 Plug 'Chiel92/vim-autoformat',{ 'on': 'Autoformat' }                     " Indent fix on file
 Plug 'easymotion/vim-easymotion'    " Searh in file
 Plug 'ctrlpvim/ctrlp.vim'           " Search files
 Plug 'tacahiroy/ctrlp-funky', { 'on': 'CtrlPFunky' }                     " Search functions
-Plug 'maralla/completor.vim'        " Async complete engine
-"Plug 'artur-shaik/vim-javacomplete2', {'for': 'java'} " Java improve
 Plug 'shime/vim-livedown', { 'for': 'markdown' } " Install Node & this: npm install -g livedown
 Plug 'christoomey/vim-system-copy'
+" Auto Complete
+Plug 'prabirshrestha/asyncomplete.vim' | Plug 'prabirshrestha/async.vim' " Autocomplete Engine
+Plug 'prabirshrestha/asyncomplete-file.vim'
+Plug 'prabirshrestha/asyncomplete-buffer.vim'
+Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
+Plug 'prabirshrestha/vim-lsp' | Plug 'prabirshrestha/asyncomplete-lsp.vim' " LSP Support
+Plug 'keremc/asyncomplete-clang.vim', { 'for': ['c', 'cpp' ] }
 call plug#end()
 "
 "   SETTINGS
@@ -99,13 +103,6 @@ let g:NERDTreeNodeDelimiter = "\u00a0"  " Fix delimitter in nerdtree
 let g:NERDTreeIgnore=['CVS','\.dSYM$', '.git', '.DS_Store', '\.swp$', '\.swo$']
 let g:NERDTreeChDirMode = 2             " Setting root dir in NT also sets VIM's cd
 let g:NERDTreeShowHidden = 1            " Shows invisibles
-"   COMPLETE
-set wildmenu
-let g:completor_java_omni_trigger = '([^. \t0-9].\w*)' " Java improve
-autocmd FileType java setlocal omnifunc=javacomplete#Complete " Please install java-jdk
-if system('uname -s') == "Linux\n"                     " Python improve
-    let g:completor_python_binary = '/usr/bin/python3' " Please install Jedi:
-endif                                                  " pip install jedi
 "   SYNTAX
 let g:cpp_class_scope_highlight = 1
 let g:cpp_class_decl_highlight = 1                      " C/C++ improve
@@ -147,3 +144,50 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " Fix copy text to system clipboard and paste from it (for ubuntu install xsel)
 nmap <C-c> cP
 vmap <C-c> cp
+"
+"   AUTOCOMPLETIONS
+"
+set wildmenu
+let g:asyncomplete_smart_completion = 1
+let g:asyncomplete_auto_popup = 1
+let g:asyncomplete_remove_duplicates = 1
+let g:asyncomplete_buffer_clear_cache = 1
+function! s:check_back_space() abort
+    let col = col('.') - 1 return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+" TAB and SHIFT+TAB correct behavior
+inoremap <silent><expr> <TAB>
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ asyncomplete#force_refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+" Register sources
+" File/Directories
+au User asyncomplete_setup call asyncomplete#register_source(
+            \ asyncomplete#sources#file#get_source_options({
+            \ 'name': 'file', 'whitelist': ['*'], 'priority': 10,
+            \ 'completor': function('asyncomplete#sources#file#completor')
+            \ }))
+" Buffer
+autocmd User asyncomplete_setup call asyncomplete#register_source(
+            \ asyncomplete#sources#buffer#get_source_options({
+            \ 'name': 'buffer', 'whitelist': ['*'],
+            \ 'completor': function('asyncomplete#sources#buffer#completor'),
+            \ }))
+" Snippets
+autocmd User asyncomplete_setup call asyncomplete#register_source(
+            \ asyncomplete#sources#ultisnips#get_source_options({
+            \ 'name': 'ultisnips', 'whitelist': ['*'],
+            \ 'completor': function('asyncomplete#sources#ultisnips#completor'),
+            \ }))
+" C/C++
+autocmd User asyncomplete_setup call asyncomplete#register_source(
+            \ asyncomplete#sources#clang#get_source_options())
+"   LANG SERVERS
+" Python
+if executable('pyls') " sudo -H pip3 install python-language-server
+    au User lsp_setup call lsp#register_server({
+                \ 'name': 'pyls', 'cmd': {server_info->['pyls']}, 'whitelist': ['python'],
+                \ })
+endif
