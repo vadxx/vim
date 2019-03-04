@@ -57,25 +57,25 @@ Plug 'mhinz/vim-startify'           " Better start screen
 Plug 'lifepillar/vim-gruvbox8'      " Good color scheme
 Plug 'itchyny/lightline.vim'        " Bottom status line
 Plug 'mhinz/vim-signify'            " See changes of file in local repo git, hg etc
-Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } " File-tree
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } " File-tree with opt's
 Plug 'Raimondi/delimitMate'         " Auto close bracket's
 Plug 'scrooloose/nerdcommenter', { 'on': '<plug>NERDCommenterToggle' }   " For comment line(s)
 Plug 'mattn/emmet-vim',  { 'for': ['html', 'javascript', 'php', 'xml'] } " For Web-dev
-Plug 'ap/vim-css-color', { 'for': ['css', 'scss', 'sass', 'less', 'stylus'] }
-Plug 'SirVer/ultisnips'  | Plug 'honza/vim-snippets'                     " Snippets and Engine
+Plug 'ap/vim-css-color', { 'for': ['css', 'scss', 'sass', 'less', 'stylus'] } " Highlight
+Plug 'Shougo/neosnippet.vim' | Plug 'Shougo/neosnippet-snippets' " Snippets and Engine
 Plug 'scrooloose/syntastic'         " Syntax checker
-Plug 'Chiel92/vim-autoformat',{ 'on': 'Autoformat' }                     " Indent fix on file
+Plug 'Chiel92/vim-autoformat',{ 'on': 'Autoformat' }             " Indent fix on file
 Plug 'easymotion/vim-easymotion'    " Searh in file
 Plug 'ctrlpvim/ctrlp.vim'           " Search files
-Plug 'tacahiroy/ctrlp-funky', { 'on': 'CtrlPFunky' }                     " Search functions
+Plug 'tacahiroy/ctrlp-funky', { 'on': 'CtrlPFunky' }             " Search functions
 Plug 'shime/vim-livedown', { 'for': 'markdown' } " Install Node and: npm install -g livedown
 Plug 'christoomey/vim-system-copy'
 " Auto Complete
-Plug 'prabirshrestha/asyncomplete.vim'| Plug 'prabirshrestha/async.vim'  " Autocomplete Engine
-Plug 'prabirshrestha/asyncomplete-file.vim'
-Plug 'prabirshrestha/asyncomplete-buffer.vim'
-Plug 'prabirshrestha/asyncomplete-ultisnips.vim'
-Plug 'keremc/asyncomplete-clang.vim', { 'for': ['c', 'cpp' ] }
+Plug 'lifepillar/vim-mucomplete'
+Plug 'davidhalter/jedi-vim', { 'for': 'python'}
+Plug 'justmao945/vim-clang', { 'for': ['c', 'cpp']}
+
+
 call plug#end()
 "
 "   SETTINGS
@@ -104,8 +104,8 @@ let g:NERDTreeChDirMode = 2             " Setting root dir in NT also sets VIM's
 let g:NERDTreeShowHidden = 1            " Shows invisibles
 "   SYNTAX
 let g:cpp_class_scope_highlight = 1
-let g:cpp_class_decl_highlight = 1      " C/C++ improve
-let g:python_highlight_all = 1          " Python Improve
+let g:cpp_class_decl_highlight = 1                      " C/C++ improve
+let g:python_highlight_all = 1                          " Python Improve
 "   SYNTASTIC
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -119,66 +119,52 @@ function! SyntasticCheckHook(errors) " For optimize size a list of errors and wa
     endif
 endfunction
 "   SEARCH
-let g:ctrlp_cmd = 'CtrlPMixed'  " Improved behavior CtrlP
+let g:ctrlp_cmd = 'CtrlPMixed' " Improved behavior CtrlP
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 "   EXTRA
-filetype plugin indent on       " Enable file type detection and do lang-dependent indenting.
-set laststatus=2                " Always show status line
-set backspace=indent,eol,start  " Make backspace behave in a sane manner.
+filetype plugin indent on      " Enable file type detection and do lang-dependent indenting.
+set laststatus=2               " Always show status line
+set backspace=indent,eol,start " Make backspace behave in a sane manner.
 map Q <Nop>
 " Still keep ability to repeat a go-to
 noremap ;; ;
-set nocompatible                " Disable vi compatibility (emulation of old bugs)
-set lazyredraw                  " Don't redraw while executing macros (good performance config)
-set mouse=a                     " Mouse Support
-set noshowmode                  " Get rid of the ugly default status line
-let @/ = ""                     " Clear search pattern
+set nocompatible               " Disable vi compatibility (emulation of old bugs)
+set lazyredraw                 " Don't redraw while executing macros (good performance config)
+set mouse=a                    " Mouse Support
+set noshowmode                 " Get rid of the ugly default status line
+let @/ = ""                    " Clear search pattern
 " For qwerty it is easier tu use ; than :
 map ; :
 let &t_SI = "\e[6 q"
-let &t_EI = "\e[2 q"            " Cursor thin/bold
+let &t_EI = "\e[2 q"           " Cursor thin/bold
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 " Fix copy text to system clipboard and paste from it (for ubuntu install xsel)
 nmap <C-c> cP
 vmap <C-c> cp
 "
+"   SNIPPETS
+"
+" SuperTab like snippets behavior.
+imap <expr><TAB> pumvisible() ? "\<C-n>" :
+            \ neosnippet#expandable_or_jumpable() ?
+            \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+            \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+"
 "   AUTOCOMPLETIONS
 "
-set wildmenu
-let g:asyncomplete_smart_completion = 1
-let g:asyncomplete_auto_popup = 1
-let g:asyncomplete_remove_duplicates = 1
-let g:asyncomplete_buffer_clear_cache = 1
-function! s:check_back_space() abort
-    let col = col('.') - 1 return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-" TAB and SHIFT+TAB correct behavior
-inoremap <silent><expr> <TAB>
-            \ pumvisible() ? "\<C-n>" :
-            \ <SID>check_back_space() ? "\<TAB>" :
-            \ asyncomplete#force_refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-" File/Directories
-au User asyncomplete_setup call asyncomplete#register_source(
-            \ asyncomplete#sources#file#get_source_options({
-            \ 'name': 'file', 'whitelist': ['*'], 'priority': 10,
-            \ 'completor': function('asyncomplete#sources#file#completor')
-            \ }))
-" Buffer
-autocmd User asyncomplete_setup call asyncomplete#register_source(
-            \ asyncomplete#sources#buffer#get_source_options({
-            \ 'name': 'buffer', 'whitelist': ['*'],
-            \ 'completor': function('asyncomplete#sources#buffer#completor'),
-            \ }))
-" Snippets
-autocmd User asyncomplete_setup call asyncomplete#register_source(
-            \ asyncomplete#sources#ultisnips#get_source_options({
-            \ 'name': 'ultisnips', 'whitelist': ['*'],
-            \ 'completor': function('asyncomplete#sources#ultisnips#completor'),
-            \ }))
-" C/C++
-autocmd User asyncomplete_setup call asyncomplete#register_source(
-            \ asyncomplete#sources#clang#get_source_options())
+set wildmenu    | autocmd CompleteDone * pclose
+set noinfercase | set completeopt=menuone,noinsert,preview
+let g:mucomplete#chains = {}
+let g:mucomplete#chains.default = ['path', 'nsnp', 'keyn']
+let g:mucomplete#enable_auto_at_startup = 1
+let g:mucomplete#no_mappings = 1
+"   C/C++
+let g:clang_c_completeopt = 'menuone,noinsert,preview'
+let g:clang_cpp_completeopt = 'menuone,noinsert,preview'
+" Options
+let g:clang_c_options = '-std=gnu11'
+let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
+
