@@ -74,8 +74,6 @@ Plug 'christoomey/vim-system-copy'
 Plug 'lifepillar/vim-mucomplete'
 Plug 'davidhalter/jedi-vim', { 'for': 'python'}
 Plug 'justmao945/vim-clang', { 'for': ['c', 'cpp']}
-
-
 call plug#end()
 "
 "   SETTINGS
@@ -150,13 +148,12 @@ vmap <C-c> cp
 imap <expr><TAB> pumvisible() ? "\<C-n>" :
             \ neosnippet#expandable_or_jumpable() ?
             \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-            \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 "
 "   AUTOCOMPLETIONS
 "
-set wildmenu    | autocmd CompleteDone * pclose
+set wildmenu
 set noinfercase | set completeopt=menuone,noinsert,preview
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 let g:mucomplete#chains = {}
 let g:mucomplete#chains.default = ['path', 'nsnp', 'keyn']
 let g:mucomplete#enable_auto_at_startup = 1
@@ -164,7 +161,4 @@ let g:mucomplete#no_mappings = 1
 "   C/C++
 let g:clang_c_completeopt = 'menuone,noinsert,preview'
 let g:clang_cpp_completeopt = 'menuone,noinsert,preview'
-" Options
-let g:clang_c_options = '-std=gnu11'
-let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
-
+ 

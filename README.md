@@ -25,7 +25,7 @@ Nothing. This config fully works with default system vim.
 ### Optional:
 For improve [Python] support:
 ```bash
-sudo -H pip3 install flake8
+sudo -H pip install flake8 jedi
 ```
 For markdown live server (install [node.js] first):
 ```bash
@@ -74,15 +74,14 @@ For usability, instead of `:` you can use `;`.
 *   Simple modern config;
 *   Easy keybindings;
 *   Minimal requirements (not needed patching fonts, support vim7+, not needed recompile vim etc);
-*   Support [110+ languages](https://github.com/sheerun/vim-polyglot);
-*   Syntax highlight;
+*   Support [110+ languages](https://github.com/sheerun/vim-polyglot)(syntax highlight, indent's);
 *   Syntax checking error's and warnings (work after save changes in code);
 *   File-tree navigation;
 *   List of function's declaration (in source code);
 *   File finder;
 *   Code [autocomplete] (please read docs);
 *   Clang support;
-*   Python support (`flake8`);
+*   Python support (`flake8`, `jedi`);
 *   Markdown live server ([livedown]);
 *   Code auto formatter (indent's);
 *   Snippets;
@@ -114,9 +113,9 @@ MIT
 [vim-plug]:https://github.com/junegunn/vim-plug
 [Vim]:http://www.vim.org/download.php#pc
 [Python]:https://www.python.org
-[node.js]:https://nodejs.org/en/
+[node.js]:https://nodejs.org/en
 [livedown]:https://github.com/shime/livedown
 [live-server]:https://www.npmjs.com/package/live-server
-[autocomplete]:https://github.com/prabirshrestha/asyncomplete.vim
+[autocomplete]:https://github.com/lifepillar/vim-mucomplete
 [EasyMotion]:https://github.com/easymotion/vim-easymotion
 [Emmet]:https://github.com/mattn/emmet-vim
