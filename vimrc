@@ -57,7 +57,7 @@ Plug 'mhinz/vim-startify'           " Better start screen
 Plug 'lifepillar/vim-gruvbox8'      " Good color scheme
 Plug 'itchyny/lightline.vim'        " Bottom status line
 Plug 'mhinz/vim-signify'            " See changes of file in local repo git, hg etc
-Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } " File-tree with opt's
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } " File-tree
 Plug 'Raimondi/delimitMate'         " Auto close bracket's
 Plug 'scrooloose/nerdcommenter', { 'on': '<plug>NERDCommenterToggle' }   " For comment line(s)
 Plug 'mattn/emmet-vim',  { 'for': ['html', 'javascript', 'php', 'xml'] } " For Web-dev
@@ -71,9 +71,10 @@ Plug 'tacahiroy/ctrlp-funky', { 'on': 'CtrlPFunky' }             " Search functi
 Plug 'shime/vim-livedown', { 'for': 'markdown' } " Install Node and: npm install -g livedown
 Plug 'christoomey/vim-system-copy'
 " Auto Complete
-Plug 'lifepillar/vim-mucomplete'
-Plug 'davidhalter/jedi-vim', { 'for': 'python'}
-Plug 'justmao945/vim-clang', { 'for': ['c', 'cpp']}
+Plug 'prabirshrestha/asyncomplete.vim'| Plug 'prabirshrestha/async.vim' " Autocomplete Engine
+Plug 'prabirshrestha/asyncomplete-file.vim'
+Plug 'prabirshrestha/asyncomplete-buffer.vim'
+Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
 call plug#end()
 "
 "   SETTINGS
@@ -145,20 +146,38 @@ vmap <C-c> cp
 "   SNIPPETS
 "
 " SuperTab like snippets behavior.
-imap <expr><TAB> pumvisible() ? "\<C-n>" :
-            \ neosnippet#expandable_or_jumpable() ?
-            \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+            \ "\<Plug>(neosnippet_expand_or_jump)"
+            \: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+            \ "\<Plug>(neosnippet_expand_or_jump)"
+            \: "\<TAB>"
 "
 "   AUTOCOMPLETIONS
 "
-set wildmenu
-set noinfercase | set completeopt=menuone,noinsert,preview
+set wildmenu | set noinfercase | set completeopt=menuone,noinsert,noselect,preview
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-let g:mucomplete#chains = {}
-let g:mucomplete#chains.default = ['path', 'nsnp', 'keyn']
-let g:mucomplete#enable_auto_at_startup = 1
-let g:mucomplete#no_mappings = 1
-"   C/C++
-let g:clang_c_completeopt = 'menuone,noinsert,preview'
-let g:clang_cpp_completeopt = 'menuone,noinsert,preview'
- 
+let g:asyncomplete_smart_completion = 1
+let g:asyncomplete_remove_duplicates = 1
+let g:asyncomplete_buffer_clear_cache = 1
+function! s:check_back_space() abort
+    let col = col('.') - 1 return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+" File/Directories
+au User asyncomplete_setup call asyncomplete#register_source(
+            \ asyncomplete#sources#file#get_source_options({
+            \ 'name': 'file', 'whitelist': ['*'], 'priority': 10,
+            \ 'completor': function('asyncomplete#sources#file#completor')
+            \ }))
+" Buffer
+autocmd User asyncomplete_setup call asyncomplete#register_source(
+            \ asyncomplete#sources#buffer#get_source_options({
+            \ 'name': 'buffer', 'whitelist': ['*'],
+            \ 'completor': function('asyncomplete#sources#buffer#completor'),
+            \ }))
+" Snippets
+call asyncomplete#register_source(asyncomplete#sources#neosnippet#get_source_options({
+            \ 'name': 'neosnippet', 'whitelist': ['*'],
+            \ 'completor': function('asyncomplete#sources#neosnippet#completor'),
+            \ }))
+

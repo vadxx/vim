@@ -1,5 +1,5 @@
 # VIM
-The simple and fast Vim configuration for c/c++, python, php, html/css, javascript, java.<br>
+The modern, simple and fast Vim configuration for code.<br>
 
 | Start Screen  | Work with C++ |
 | ------------- | ------------- |
@@ -25,7 +25,7 @@ Nothing. This config fully works with default system vim.
 ### Optional:
 For improve [Python] support:
 ```bash
-sudo -H pip install flake8 jedi
+sudo -H pip3 install flake8
 ```
 For markdown live server (install [node.js] first):
 ```bash
@@ -81,7 +81,7 @@ For usability, instead of `:` you can use `;`.
 *   File finder;
 *   Code [autocomplete] (please read docs);
 *   Clang support;
-*   Python support (`flake8`, `jedi`);
+*   Python support (`flake8`);
 *   Markdown live server ([livedown]);
 *   Code auto formatter (indent's);
 *   Snippets;
@@ -116,6 +116,6 @@ MIT
 [node.js]:https://nodejs.org/en
 [livedown]:https://github.com/shime/livedown
 [live-server]:https://www.npmjs.com/package/live-server
-[autocomplete]:https://github.com/lifepillar/vim-mucomplete
+[autocomplete]:prabirshrestha/asyncomplete.vim
 [EasyMotion]:https://github.com/easymotion/vim-easymotion
 [Emmet]:https://github.com/mattn/emmet-vim
