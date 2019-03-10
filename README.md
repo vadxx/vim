@@ -19,7 +19,6 @@ unzip ~/Downloads/vim.zip -d ~/
 sudo apt-get install vim xsel
 ```
 For run script, install `curl`, `git`.
-If you are programming in C/C++, install `clang`.
 ##### Mac:
 Nothing. This config fully works with default system vim.
 ### Optional:
@@ -45,7 +44,7 @@ For usability, instead of `:` you can use `;`.
 *   `SPC + [` - toggle NerdTree
 *   `SPC + ]` - toggle Funky (functions definition finder in souce-code)
 *   `SPC + SHIFT + [` - find current opened file using NerdTree (or `SPC + {` )
-*   `SPC + SHIFT + ]` - find definition of function under cursor using Funky (or `SPC + }`)<br><br>
+*   `SPC + SHIFT + ]` - find definition of function under cursor using Funky (or `SPC + }` )<br><br>
     To explore the standard features of Vim, I recommend pressing `F1`, or `vimtutor`.<br>
     If you don't know how to use NerdTree, toggle it, and press `?`.
 
@@ -74,18 +73,16 @@ For usability, instead of `:` you can use `;`.
 *   Simple modern config;
 *   Easy keybindings;
 *   Minimal requirements (not needed patching fonts, support vim7+, not needed recompile vim etc);
-*   Support [110+ languages](https://github.com/sheerun/vim-polyglot)(syntax highlight, indent's);
+*   Support [110+ languages](https://github.com/sheerun/vim-polyglot) (syntax highlight, indent's);
 *   Syntax checking error's and warnings (work after save changes in code);
 *   File-tree navigation;
 *   List of function's declaration (in source code);
 *   File finder;
 *   Code [autocomplete] (please read docs);
-*   Clang support;
-*   Python support (`flake8`);
 *   Markdown live server ([livedown]);
 *   Code auto formatter (indent's);
 *   Snippets;
-*   Version control systems (**git**, **mercurial**, **subversion** etc) integration;
+*   Version control systems (`git`, `mercurial`, `subversion` etc) integration;
 *   [Emmet];
 *   Code commender;
 *   [EasyMotion];
