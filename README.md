@@ -19,9 +19,16 @@ unzip ~/Downloads/vim.zip -d ~/
 sudo apt-get install vim xsel
 ```
 For run script, install `curl`, `git`.
-If you are programming in C/C++, install `clang`.
 ##### Mac:
-Nothing. This config fully works with default system vim.
+Install `ctags`. Download it [here][ctags].
+```bash
+tar -zxvf ctags-*.tar && cd ctags-*/ && ./configure && sudo make install
+```
+##### Windows:
+Install `git`. Download it [here](https://git-scm.com). <br>
+Download [latest release](https://github.com/vadxx/vim/releases). Extract to root user folder. <br>
+Run `Git Bash` shortcut. Vim is preinstalled.
+
 ### Optional:
 For improve [Python] support:
 ```bash
@@ -43,9 +50,8 @@ For usability, instead of `:` you can use `;`.
 *   `SPC + q` - exit from window
 *   `SPC + s` - save file
 *   `SPC + [` - toggle NerdTree
-*   `SPC + ]` - toggle Funky (functions definition finder in souce-code)
-*   `SPC + SHIFT + [` - find current opened file using NerdTree (or `SPC + {` )
-*   `SPC + SHIFT + ]` - find definition of function under cursor using Funky (or `SPC + }`)<br><br>
+*   `SPC + ]` - toggle TagBar (functions definition finder in souce-code)
+*   `SPC + SHIFT + [` - find current opened file using NerdTree (or `SPC + {` )<br><br>
     To explore the standard features of Vim, I recommend pressing `F1`, or `vimtutor`.<br>
     If you don't know how to use NerdTree, toggle it, and press `?`.
 
@@ -93,6 +99,7 @@ For usability, instead of `:` you can use `;`.
 
 ## TODO
 *   ~~EasyMotion integration;~~
+*   ~~Windows support;~~
 *   Write a project website;
 *   Add installer for neovim;
 
@@ -113,6 +120,7 @@ MIT
 [vim-plug]:https://github.com/junegunn/vim-plug
 [Vim]:http://www.vim.org/download.php#pc
 [Python]:https://www.python.org
+[ctags]:http://ctags.sourceforge.net
 [node.js]:https://nodejs.org/en
 [livedown]:https://github.com/shime/livedown
 [live-server]:https://www.npmjs.com/package/live-server

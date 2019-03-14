@@ -19,10 +19,8 @@ map <Leader>r <Plug>(quickrun)
 map <Leader>[ :NERDTreeToggle<CR>
 " SPC + Shift + [  Nerd Tree Toggle s
 map <Leader>{ :NERDTreeFind<CR>
-" SPC + ]  Toggle Funky
-nnoremap <Leader>] :CtrlPFunky<CR>
-" SPC + Shift + ] Narrow the list down with a word under cursor
-nnoremap <Leader>} :execute 'CtrlPFunky ' . expand('<cword>')<CR>
+" SPC + ] TagBar Toggle
+nmap <Leader>] :TagbarToggle<CR>
 " SPC + C  Comment line or lines
 nmap <Leader>c <plug>NERDCommenterToggle
 vmap <Leader>c <plug>NERDCommenterToggle gv
@@ -58,6 +56,7 @@ Plug 'lifepillar/vim-gruvbox8'      " Good color scheme
 Plug 'itchyny/lightline.vim'        " Bottom status line
 Plug 'mhinz/vim-signify'            " See changes of file in local repo git, hg etc
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } " File-tree
+Plug 'majutsushi/tagbar',   { 'on': ['TagbarToggle'] }                   " Tags-tree
 Plug 'Raimondi/delimitMate'         " Auto close bracket's
 Plug 'scrooloose/nerdcommenter', { 'on': '<plug>NERDCommenterToggle' }   " For comment line(s)
 Plug 'mattn/emmet-vim',  { 'for': ['html', 'javascript', 'php', 'xml'] } " For Web-dev
@@ -67,14 +66,9 @@ Plug 'scrooloose/syntastic'         " Syntax checker
 Plug 'Chiel92/vim-autoformat',{ 'on': 'Autoformat' }             " Indent fix on file
 Plug 'easymotion/vim-easymotion'    " Searh in file
 Plug 'ctrlpvim/ctrlp.vim'           " Search files
-Plug 'tacahiroy/ctrlp-funky', { 'on': 'CtrlPFunky' }             " Search functions
 Plug 'shime/vim-livedown', { 'for': 'markdown' } " Install Node and: npm install -g livedown
-Plug 'christoomey/vim-system-copy'
-" Auto Complete
-Plug 'prabirshrestha/asyncomplete.vim'| Plug 'prabirshrestha/async.vim' " Autocomplete Engine
-Plug 'prabirshrestha/asyncomplete-file.vim'
-Plug 'prabirshrestha/asyncomplete-buffer.vim'
-Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
+Plug 'christoomey/vim-system-copy'  " Access to system clipboard Mac, Linux, Windows
+Plug 'lifepillar/vim-mucomplete'    " Auto-complete Engine
 call plug#end()
 "
 "   SETTINGS
@@ -103,8 +97,8 @@ let g:NERDTreeChDirMode = 2             " Setting root dir in NT also sets VIM's
 let g:NERDTreeShowHidden = 1            " Shows invisibles
 "   SYNTAX
 let g:cpp_class_scope_highlight = 1
-let g:cpp_class_decl_highlight = 1                      " C/C++ improve
-let g:python_highlight_all = 1                          " Python Improve
+let g:cpp_class_decl_highlight = 1      " C/C++ improve
+let g:python_highlight_all = 1          " Python Improve
 "   SYNTASTIC
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -149,35 +143,15 @@ vmap <C-c> cp
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
             \ "\<Plug>(neosnippet_expand_or_jump)"
             \: pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-            \ "\<Plug>(neosnippet_expand_or_jump)"
-            \: "\<TAB>"
+imap <expr><S-TAB> mucomplete#extend_fwd("\<down>")
 "
 "   AUTOCOMPLETIONS
 "
 set wildmenu | set noinfercase | set completeopt=menuone,noinsert,noselect,preview
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-let g:asyncomplete_smart_completion = 1
-let g:asyncomplete_remove_duplicates = 1
-let g:asyncomplete_buffer_clear_cache = 1
-function! s:check_back_space() abort
-    let col = col('.') - 1 return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-" File/Directories
-au User asyncomplete_setup call asyncomplete#register_source(
-            \ asyncomplete#sources#file#get_source_options({
-            \ 'name': 'file', 'whitelist': ['*'], 'priority': 10,
-            \ 'completor': function('asyncomplete#sources#file#completor')
-            \ }))
-" Buffer
-autocmd User asyncomplete_setup call asyncomplete#register_source(
-            \ asyncomplete#sources#buffer#get_source_options({
-            \ 'name': 'buffer', 'whitelist': ['*'],
-            \ 'completor': function('asyncomplete#sources#buffer#completor'),
-            \ }))
-" Snippets
-call asyncomplete#register_source(asyncomplete#sources#neosnippet#get_source_options({
-            \ 'name': 'neosnippet', 'whitelist': ['*'],
-            \ 'completor': function('asyncomplete#sources#neosnippet#completor'),
-            \ }))
+let g:mucomplete#chains = {
+            \ 'default' : ['path', 'nsnp', 'c-n', 'keyn', 'uspl']
+            \ }
+let g:mucomplete#no_mappings = 1
+let g:mucomplete#enable_auto_at_startup = 1
 
