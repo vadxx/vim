@@ -67,7 +67,6 @@ Plug 'Chiel92/vim-autoformat',{ 'on': 'Autoformat' }             " Indent fix on
 Plug 'easymotion/vim-easymotion'    " Searh in file
 Plug 'ctrlpvim/ctrlp.vim'           " Search files
 Plug 'shime/vim-livedown', { 'for': 'markdown' } " Install Node and: npm install -g livedown
-Plug 'christoomey/vim-system-copy'  " Access to system clipboard Mac, Linux, Windows
 Plug 'lifepillar/vim-mucomplete'    " Auto-complete Engine
 call plug#end()
 "
@@ -134,9 +133,10 @@ let &t_EI = "\e[2 q"           " Cursor thin/bold
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 " Fix copy text to system clipboard and paste from it (for ubuntu install xsel)
-nmap <C-c> cP
-vmap <C-c> cp
-"
+nmap <C-c> "+yy
+vmap <C-c> "+y
+nmap <C-v> "+pa
+imap <C-v> <Esc> "+pa
 "   SNIPPETS
 "
 " SuperTab like snippets behavior.

@@ -16,11 +16,18 @@ unzip ~/Downloads/vim.zip -d ~/
 ### Minimal dependencies:
 ##### Ubuntu:
 ```bash
-sudo apt-get install vim xsel
+sudo apt-get install vim-gtk
 ```
 For run script, install `curl`, `git`.
 ##### Mac:
-Install `ctags`. Download it [here][ctags].
+Install `MacVim`. Download it [here](https://macvim-dev.github.io/macvim/).
+Link to sytem command line:
+```bash
+sudo ln -s /Applications/MacVim.app/Contents/bin/vim /usr/local/bin/vim
+sudo ln -s /Applications/MacVim.app/Contents/bin/vim /usr/local/bin/vi
+```
+
+Install `ctags`. Download it [here][ctags]. Uncompress and install it:
 ```bash
 tar -zxvf ctags-*.tar && cd ctags-*/ && ./configure && sudo make install
 ```
@@ -60,7 +67,8 @@ For usability, instead of `:` you can use `;`.
 *   `SPC + c` - comment line(s)
 *   `SPC + r` - run code
 *   `CTRL + e` - call [Emmet]
-*   `CTRL + c` - copy text to system clipboard (for ubuntu install `xsel`)
+*   `CTRL + c` - copy text to system clipboard
+*   `CTRL + v` - paste text from system clipboard
 *   `<` and `>` - for indent line (or selected line)
 #### Window navigation:
 *   `SPC + t` - new tab
