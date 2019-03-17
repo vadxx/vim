@@ -29,7 +29,7 @@ sudo ln -s /Applications/MacVim.app/Contents/bin/vim /usr/local/bin/vi
 
 Install `ctags`. Download it [here][ctags]. Uncompress and install it:
 ```bash
-tar -zxvf ctags-*.tar && cd ctags-*/ && ./configure && sudo make install
+cd Downloads && tar -zxvf ctags-*.tar.gz && cd ctags-*/ && ./configure && sudo make install
 ```
 ##### Windows:
 Install `git`. Download it [here](https://git-scm.com). <br>

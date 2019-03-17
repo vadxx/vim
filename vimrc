@@ -105,6 +105,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
+let g:syntastic_python_checkers=['python3', 'flake8']
 function! SyntasticCheckHook(errors) " For optimize size a list of errors and warnings
     if !empty(a:errors)
         let g:syntastic_loc_list_height = min([len(a:errors), 10])
