@@ -138,6 +138,7 @@ nmap <C-c> "+yy
 vmap <C-c> "+y
 nmap <C-v> "+pa
 imap <C-v> <Esc> "+pa
+set noeb vb t_vb=             " Disable beep
 "   SNIPPETS
 "
 " SuperTab like snippets behavior.
